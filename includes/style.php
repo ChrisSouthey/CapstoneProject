@@ -14,6 +14,23 @@ body{
     background-color: #f3f4f5;
 }
 
+/* ---------------- DIV Section --------- */
+.flex{
+    display:flex;
+    flex-direction:column;
+}
+
+.sc{
+    display:flex;
+}
+
+.fm{
+    display:flex;
+}
+
+.LogoHeaderSearch{
+    display:flex;
+}
 /* ---------------- Header Section --------- */
 .logo{
     width:500px;
@@ -28,9 +45,7 @@ header{
     background-color: #BF0000;
 }
 
-.flex{
-    display:flex;
-}
+
 
 .search{
     width:820px;
@@ -45,9 +60,7 @@ header{
     background-color:#DDDDDD;
 }
 
-.sc{
-    display:flex;
-}
+
 
 /* ---------------- Filter Section --------- */
 .filter{
@@ -58,9 +71,7 @@ header{
 }
 
 /* ---------------- Body Section --------- */
-.fm{
-    display:flex;
-}
+
 
 .mainbox{
     width:950px;
@@ -75,6 +86,8 @@ footer{
     height:45px;
     background: #BF0000;
 }
+
+
 
 
 

@@ -2,36 +2,47 @@
 <?php include 'includes/style.php'; ?>
 
 <div class="flex"> <!-- MAKES EVERYTHING FLEX -->
-    <div class="lf">
+    <div class="LogoHeaderSearch">
+        
         <section class="logo"> <!-- LOGO BOX -->
 
         </section>
-        <div class="fm">
-            <section class="filter"> <!-- FILTER BOX -->
 
-            </section>
-            <section class="mainbox">
+        <div class="HeaderSearch">
 
-            </section>
-        </div>
-    </div>
-    
-    <div>
-        <header>
+            <header> <!-- HEADER -->
 
-        </header>
-        <div class="sc">
+            </header>
+
             <section class="search"> <!-- SEARCH BOX-->
 
             </section>
-            <section class="cardinfo"> <!-- CARD INFO BOX -->
-
-            </section>
         </div>
+
+        
+    </div> 
+
+    <div class="fm">
+
+        <section class="filter"> <!-- FILTER BOX -->
+
+        </section>
+
+        <section class="mainbox"> <!-- MAIN BOX -->
+
+        </section>
+
+        <section class="cardinfo"> <!-- CARD INFO BOX -->
+
+        </section>
+
     </div>
+    
+
+
+    <footer> <!-- FOOTER -->
+
+    </footer>
+
 </div>
-
-<footer> <!-- FOOTER -->
-
-</footer>
 <?php include 'includes/footer.php'; ?>

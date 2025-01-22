@@ -2,6 +2,6 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Chris's Site</title>
+        <title>Deck Buddy</title>
     </head>
     <body>
