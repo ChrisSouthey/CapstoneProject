@@ -14,7 +14,16 @@
     width:100%;
     height:100%;
     background-color: #BF0000;
-    border-radius: 0px 0px 60px 0px;
+    display: flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.logotext{
+    font-family:monofett;
+    color:white;
+    font-size:30px;
+    margin-bottom:25px;
 }
 
 
@@ -26,20 +35,23 @@
     background-color:#242024;
     border-radius: 0px 0px 30px 30px;
 }
+.searchicon{
+    width:52px;
+    height: 52px;
+}
 
 .filter{
     grid-area:f;
     width:370px;
     height:755px;
     background-color:#DDDDDD; 
-    border-radius: 0px 30px 0px 0px;
 }
 
 .mainbox{
     grid-area:m;
     width:950px;
     height:755px;
-    background:wheat;
+    background:#f3f4f5;
 }
 
 .cardinfo{
