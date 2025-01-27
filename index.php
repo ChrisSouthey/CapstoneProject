@@ -1,48 +1,16 @@
 <?php include 'includes/header.php'; ?>
-<?php include 'includes/style.php'; ?>
+<?php include 'includes/style grid.php'; ?>
 
-<div class="flex"> <!-- MAKES EVERYTHING FLEX -->
-    <div class="LogoHeaderSearch">
-        
-        <section class="logo"> <!-- LOGO BOX -->
-
-        </section>
-
-        <div class="HeaderSearch">
-
-            <header> <!-- HEADER -->
-
-            </header>
-
-            <section class="search"> <!-- SEARCH BOX-->
-
-            </section>
-        </div>
-
-        
-    </div> 
-
-    <div class="fm">
-
-        <section class="filter"> <!-- FILTER BOX -->
-
-        </section>
-
-        <section class="mainbox"> <!-- MAIN BOX -->
-
-        </section>
-
-        <section class="cardinfo"> <!-- CARD INFO BOX -->
-
-        </section>
-
-    </div>
-    
-
-
-    <footer> <!-- FOOTER -->
-
-    </footer>
+<div id="container">
+    <div class="logo"></div>
+    <div class="header"></div>
+    <div class="search"></div>
+    <div class="filter"></div>
+    <div class="mainbox"></div>
+    <div class="cardinfo"></div>
+    <div class="footer"></div>
 
 </div>
+
+
 <?php include 'includes/footer.php'; ?>

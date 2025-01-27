@@ -9,8 +9,7 @@
 }
 
 body{
-    width:1920px;
-    height: 1080px;
+    
     background-color: #f3f4f5;
 }
 
