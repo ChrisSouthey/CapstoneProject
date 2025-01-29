@@ -4,7 +4,7 @@
 <div id="container">
     <div class="logo">
         <div class="logotext">
-            <h1>DECK BUDDY<h1>
+            <p>DECK BUDDY<p>
         </div>
     </div>
     <div class="search"></div>

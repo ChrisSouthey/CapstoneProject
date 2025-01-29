@@ -7,6 +7,10 @@
     margin: 0;
     padding: 0;
 }
+body{
+    width:100%;
+    height:100%;
+}
 
 /* ---------Logo-------------*/
 .logo{
@@ -21,8 +25,9 @@
 .logotext{
     font-family:monofett;
     color:white;
-    font-size:30px;
-    margin-top:20px;
+    font-size:75px;
+    margin-top:10px;
+    margin-right:2px;
 }
 
 
@@ -47,7 +52,7 @@
 .filter{
     grid-area:f;
     width:415px;
-    height:778px;
+    height:100%;
     background-color:#DDDDDD; 
 }
 
@@ -55,7 +60,7 @@
 .mainbox{
     grid-area:m;
     width:950px;
-    height:755px;
+    height:805px;
     background:#f3f4f5;
 }
 .infoBox{
@@ -108,14 +113,15 @@ p.register{
     text-decoration:none;
 }
 a:hover{
-    color:#ffffff;
+    color:#FFFFFF;
+    text-decoration:underline;
 }
 
 /* ---------CardInfo-------------*/
 .cardinfo{
     grid-area:c;
     width:555px;
-    height:899px;
+    height:926px;
     background-color:#DDDDDD;
 }
 
@@ -136,7 +142,7 @@ a:hover{
     'f f m m m c c c'
     'f f m m m c c c'
     'f f m m m c c c'
-    'ft ft ft ft ft ft ft ft';
+    'f f m m m c c c';
     background-color: #f3f4f5;
     height:100%;
 }
