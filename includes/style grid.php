@@ -117,6 +117,30 @@ a:hover{
     text-decoration:underline;
 }
 
+form{
+    margin-left:62px;
+    margin-top:57px;
+}
+.user{
+    display:flex;
+    margin-bottom:33px;
+}
+.pass{
+    display:flex;
+}
+svg{
+    margin-right:18px;
+}
+input[type=text]{
+    box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.25);
+}
+input[type=password]{
+    box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.25);
+}
+input[type=submit]{
+    box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.25);
+}
+
 /* ---------CardInfo-------------*/
 .cardinfo{
     grid-area:c;
