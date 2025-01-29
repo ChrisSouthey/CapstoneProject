@@ -8,7 +8,7 @@
     padding: 0;
 }
 
-
+/* ---------Logo-------------*/
 .logo{
     grid-area:l;
     width:100%;
@@ -16,18 +16,17 @@
     background-color: #BF0000;
     display: flex;
     justify-content:center;
-    align-items:center;
 }
 
 .logotext{
     font-family:monofett;
     color:white;
     font-size:30px;
-    margin-bottom:25px;
+    margin-top:20px;
 }
 
 
-
+/* ---------SearchBar-------------*/
 .search{
     grid-area:s;
     width:100%;
@@ -35,39 +34,100 @@
     background-color:#242024;
     border-radius: 0px 0px 30px 30px;
 }
-.searchicon{
-    width:52px;
-    height: 52px;
+.headText{
+    font-family:"Jersey 20";
+    color:white;
+    font-size:65px;
+    display:flex;
+    justify-content:center;
+    margin-top:20px;
 }
 
+/* ---------Filter-------------*/
 .filter{
     grid-area:f;
-    width:370px;
-    height:755px;
+    width:415px;
+    height:778px;
     background-color:#DDDDDD; 
 }
 
+/* ---------MainBox-------------*/
 .mainbox{
     grid-area:m;
     width:950px;
     height:755px;
     background:#f3f4f5;
 }
+.infoBox{
+    display:flex;
+    width: 605px;
+    height: 192px;
+    background-color:#BF0000;
+    border-radius: 40px;
+    margin-left: 160px;
+    margin-top:47px;
+    font-family:"Jersey 20";
+    color:white;
+    font-size:45px;
+    font-weight:400;
+}
+.infoBox p{
+    margin-top:5px;
+    margin-left:30px;
+}
+.loginBox{
+    display:flex;
+    width: 605px;
+    height: 192px;
+    background-color:#242024;
+    border-radius: 40px;
+    margin-left: 160px;
+    margin-top:47px;
+    font-family:"Jersey 20";
+    color:white;
+    font-weight:400;
+}
+.loginText{
+    margin-left:47px;
+    margin-top:10px;
+}
+p.login{
+    font-size:50px;
+    width: 500px;
+}
+p.register{
+    font-size:40px;
+    margin-top:15px;
+}
+.register a{
+    color:#BF0000;
+    text-decoration:none;
+}
+.login a{
+    color:#BF0000;
+    text-decoration:none;
+}
+a:hover{
+    color:#ffffff;
+}
 
+/* ---------CardInfo-------------*/
 .cardinfo{
     grid-area:c;
     width:555px;
-    height:881px;
+    height:899px;
     background-color:#DDDDDD;
 }
 
+/* ---------Footer-------------*/
 .footer{
     grid-area:ft;
     width:100%;
-    height:45px;
+    height:46px;
     background: #BF0000;
 }
 
+/* ---------Container/Body-------------*/
 #container{
     display:grid;
     grid-template-areas:

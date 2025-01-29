@@ -64,7 +64,7 @@ header{
 /* ---------------- Filter Section --------- */
 .filter{
    width:370px;
-   height:755px;
+   height:780px;
    background-color:#DDDDDD; 
    border-radius: 0px 30px 0px 0px;
 }
