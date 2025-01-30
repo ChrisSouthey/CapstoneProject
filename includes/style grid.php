@@ -156,7 +156,6 @@ input[type=submit]{
     background-color:#bf0000;
     border:0;
     padding:10px;
-    align:left;
 }
 
 /* ---------CardInfo-------------*/
@@ -165,14 +164,6 @@ input[type=submit]{
     width:555px;
     height:926px;
     background-color:#DDDDDD;
-}
-
-/* ---------Footer-------------*/
-.footer{
-    grid-area:ft;
-    width:100%;
-    height:46px;
-    background: #BF0000;
 }
 
 /* ---------Container/Body-------------*/
