@@ -118,8 +118,10 @@ a:hover{
 }
 
 form{
-    margin-left:62px;
-    margin-top:57px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    margin-top:180px
 }
 .user{
     display:flex;
@@ -127,18 +129,34 @@ form{
 }
 .pass{
     display:flex;
+    margin-bottom:33px;
 }
 svg{
     margin-right:18px;
 }
+input{
+    padding:10px
+}
 input[type=text]{
     box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.25);
+    font-size:30px;
+    border-radius:10px;
+    border:0;
 }
 input[type=password]{
     box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.25);
+    font-size:30px;
+    border-radius:10px;
+    border:0;
 }
 input[type=submit]{
-    box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.25);
+    margin-left:66px;
+    font-size:30px;
+    color:white;
+    background-color:#bf0000;
+    border:0;
+    padding:10px;
+    align:left;
 }
 
 /* ---------CardInfo-------------*/
