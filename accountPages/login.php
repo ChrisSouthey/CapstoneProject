@@ -2,16 +2,30 @@
 session_start();
 include '../includes/header.php'; 
 include '../includes/style grid.php'; 
+include '../model/functions.php';
+
+$email = "";
+$name = "";
+$password = "";
 
 $_session['isLoggedIn'] = false;
 $_SESSION['username'] = '';
 $error = '';
 
 if(isset($_POST['login'])){
-    $username = filter_input(INPUT_POST,'username', FILTER_SANITIZE_STRING);
+    $name = filter_input(INPUT_POST,'name', FILTER_SANITIZE_STRING);
     $password = filter_input(INPUT_POST,'password', FILTER_SANITIZE_STRING);
-}
 
+    if(login($name, $password)){
+        $_SESSION['isLoggedIn'] = true;
+        $_SESSION['name'] = $name;
+        header('Location: ../homepage.php');
+    }
+    else{
+        $error = "Error! Incorrect credentials.";
+    }
+}
+?>
 
 <div id="container">
     <div class="logo">
@@ -29,13 +43,16 @@ if(isset($_POST['login'])){
         <form method="POST">
             <div class="formcontainer">
                 <div class="user">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="#666666"><path d="M480-481q-66 0-108-42t-42-108q0-66 42-108t108-42q66 0 108 42t42 108q0 66-42 108t-108 42ZM160-160v-94q0-38 19-65t49-41q67-30 128.5-45T480-420q62 0 123 15.5t127.92 44.69q31.3 14.13 50.19 40.97Q800-292 800-254v94H160Zm60-60h520v-34q0-16-9.5-30.5T707-306q-64-31-117-42.5T480-360q-57 0-111 11.5T252-306q-14 7-23 21.5t-9 30.5v34Zm260-321q39 0 64.5-25.5T570-631q0-39-25.5-64.5T480-721q-39 0-64.5 25.5T390-631q0 39 25.5 64.5T480-541Zm0-90Zm0 411Z"/></svg><input type="text" placeholder="Username">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="#666666"><path d="M480-481q-66 0-108-42t-42-108q0-66 42-108t108-42q66 0 108 42t42 108q0 66-42 108t-108 42ZM160-160v-94q0-38 19-65t49-41q67-30 128.5-45T480-420q62 0 123 15.5t127.92 44.69q31.3 14.13 50.19 40.97Q800-292 800-254v94H160Zm60-60h520v-34q0-16-9.5-30.5T707-306q-64-31-117-42.5T480-360q-57 0-111 11.5T252-306q-14 7-23 21.5t-9 30.5v34Zm260-321q39 0 64.5-25.5T570-631q0-39-25.5-64.5T480-721q-39 0-64.5 25.5T390-631q0 39 25.5 64.5T480-541Zm0-90Zm0 411Z"/></svg><input type="text" name="name" placeholder="Username">
                 </div>
                 <div class="pass">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="#666666"><path d="M280-412q-28 0-48-20t-20-48q0-28 20-48t48-20q28 0 48 20t20 48q0 28-20 48t-48 20Zm0 172q-100 0-170-70T40-480q0-100 70-170t170-70q72 0 126 34t85 103h356l113 113-167 153-88-64-88 64-75-60h-51q-25 60-78.5 98.5T280-240Zm0-60q58 0 107-38.5t63-98.5h114l54 45 88-63 82 62 85-79-51-51H450q-12-56-60-96.5T280-660q-75 0-127.5 52.5T100-480q0 75 52.5 127.5T280-300Z"/></svg><input type="password" placeholder="Password">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="#666666"><path d="M280-412q-28 0-48-20t-20-48q0-28 20-48t48-20q28 0 48 20t20 48q0 28-20 48t-48 20Zm0 172q-100 0-170-70T40-480q0-100 70-170t170-70q72 0 126 34t85 103h356l113 113-167 153-88-64-88 64-75-60h-51q-25 60-78.5 98.5T280-240Zm0-60q58 0 107-38.5t63-98.5h114l54 45 88-63 82 62 85-79-51-51H450q-12-56-60-96.5T280-660q-75 0-127.5 52.5T100-480q0 75 52.5 127.5T280-300Z"/></svg><input type="password" name="password" placeholder="Password">
                 </div>
-                <div>
+                <div class="errLog">
                     <input type="submit" name="login" value="Log In">
+                    <div class="error">
+                        <?php echo $error?></p>
+                    </div>
                 </div>
             </div>
         </form>    

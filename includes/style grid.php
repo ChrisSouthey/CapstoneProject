@@ -157,6 +157,19 @@ input[type=submit]{
     border:0;
     padding:10px;
 }
+input[type=submit]:hover{
+    background-color:#690505;
+    cursor:pointer;
+}
+.error{
+    font-family:"Jersey 20";
+    font-size:25px;
+    margin-left:20px;
+}
+.errLog{
+    display:flex;
+    align-items:center;
+}
 
 /* ---------CardInfo-------------*/
 .cardinfo{
