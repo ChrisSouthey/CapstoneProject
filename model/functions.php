@@ -15,21 +15,6 @@ function login($name, $password) {
     return($stmt->rowCount() > 0);
 }
 
-function getUsers(){
-
-    global $db;
-
-    $results = [];
-
-    $stmt = $db->prepare("SELECT * FROM users ORDER BY email, name, password");
-
-    if($stmt->execute() && $stmt->rowCount() > 0){
-        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    } 
-
-    return $results;
-}
-
 function addUser($email, $name, $password){
 
     global $db;
@@ -51,6 +36,62 @@ function addUser($email, $name, $password){
     }
 
     return $result;
+}
+
+function updateUser($id, $email, $name, $password) {
+    global $db;
+
+    $result = '';
+
+    $sql = 'UPDATE users SET email = :e, name = :n, password = :p = :c WHERE id = :id';
+
+    $stmt = $db->prepare($sql);
+
+    $binds = array(
+        ':id'=> $id,
+        ":e" => $email,
+        ":n" => $name,
+        ":p" => sha1($password)
+    );
+
+    if($stmt->execute($binds) && $stmt->rowCount() > 0){
+        $result = 'User Updated';
+    }
+
+    return $result;
+}
+
+function getUser($id){
+    global $db;
+
+    $result = [];
+
+    $stmt = $db->prepare("SELECT * FROM users WHERE id = :id");
+
+    $binds = array(
+        ':id'=> $id
+    );
+
+    if ( $stmt->execute($binds) && $stmt->rowCount() > 0){
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    return $result;
+}
+
+function getUsers(){
+
+    global $db;
+
+    $results = [];
+
+    $stmt = $db->prepare("SELECT * FROM users");
+
+    if($stmt->execute() && $stmt->rowCount() > 0){
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    return $results;
 }
 
 
