@@ -25,7 +25,7 @@ function getUsers(){
 
     if($stmt->execute() && $stmt->rowCount() > 0){
         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    }
+    } 
 
     return $results;
 }
@@ -40,7 +40,11 @@ function addUser($email, $name, $password){
 
     $stmt = $db->prepare($sql);
 
-    $stmt->bindPARAM('')
+    $binds = array(
+        ":e" => $email,
+        ":n" => $name,
+        ":p" => sha1($password)
+    );
 
     if($stmt->execute($binds) && $stmt->rowCount() > 0){
         $result = "Data Added";
@@ -48,3 +52,26 @@ function addUser($email, $name, $password){
 
     return $result;
 }
+
+
+
+
+/*
+CREATE TABLE `users` (
+    `id` int unsigned NOT NULL AUTO_INCREMENT,
+    `email` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
+    `name` varchar(30) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
+    `password` varchar(30) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
+    PRIMARY KEY (`id`)
+  ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+
+
+  CREATE TABLE `groupz` (
+    `groupID` int unsigned NOT NULL AUTO_INCREMENT,
+    `id` int unsigned NOT NULL,
+    `groupName` varchar(30) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
+    PRIMARY KEY (`groupID`),
+    UNIQUE KEY `unique assignment` (`id`,`groupName`),
+    KEY `fk_userID` (`id`),
+    CONSTRAINT `fk_userID` FOREIGN KEY (`id`) REFERENCES `users` (`id`)
+  ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci; */

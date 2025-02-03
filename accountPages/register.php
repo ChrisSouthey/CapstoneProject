@@ -19,21 +19,25 @@ if(isset($_POST["register"])){
     else{
         $error .= 'Please enter a valid Name. <br/>';
     }
-    if(filter_input(INPUT_POST, 'password') != '' && strlen(filter_input(INPUT_POST, 'password')) < 4){
+    if(filter_input(INPUT_POST, 'password') != '' && strlen(filter_input(INPUT_POST, 'password')) >= 4){
         $password = filter_input(INPUT_POST, 'password');
     }
     else{
         $error .= 'Password must be 4 or more characters. <br/>';
     }
-    if(filter_input(INPUT_POST, 'email') != '' && filter_input(INPUT_POST, 'email') == $regex){
+    if(filter_input(INPUT_POST, 'email') != '' && preg_match($regex, filter_input(INPUT_POST, 'email'))){
         $email = filter_input(INPUT_POST, 'email');
     }
     else{
         $error .= 'Please enter valid Email. <br/>';
     }
-    addUser($email, $name, $password);
-    header('Location: ../index.php');
-    exit();
+
+    if($error == ""){
+       addUser($email, $name, $password);
+        header('Location: ../index.php');
+        exit(); 
+    }
+    
 }
 
 
