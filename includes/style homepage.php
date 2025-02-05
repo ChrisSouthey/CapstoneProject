@@ -52,8 +52,27 @@ body{
 .filter{
     grid-area:f;
     width:415px;
-    height:100%;
+    height:717px;
     background-color:#DDDDDD; 
+}
+.accsettings{
+    display:flex;
+    height:75px;
+    background-color:#242024;
+    font-family:"Jersey 20";
+    font-size:50px;
+    align-items:center;
+}
+.accsettings a{
+    color:white;
+    text-decoration:none;
+}
+.accsettings a:hover{
+    color:#bf0000;
+    text-decoration:underline;
+}
+.accsettings svg{
+    margin-left:15px;
 }
 
 
@@ -113,7 +132,7 @@ p.register{
     color:#BF0000;
     text-decoration:none;
 }
-a:hover{
+.login a:hover{
     color:#FFFFFF;
     text-decoration:underline;
 }
@@ -176,7 +195,7 @@ input[type=submit]:hover{
 .cardinfo{
     grid-area:c;
     width:555px;
-    height:100%;
+    height:917px;
     background-color:#DDDDDD;
 }
 
