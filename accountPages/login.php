@@ -7,6 +7,8 @@ include '../model/functions.php';
 $email = "";
 $name = "";
 $password = "";
+$id = "";
+$users = "";
 
 $_session['isLoggedIn'] = false;
 $_SESSION['username'] = '';
@@ -15,16 +17,13 @@ $error = '';
 if(isset($_POST['login'])){
     $name = filter_input(INPUT_POST,'name', FILTER_SANITIZE_STRING);
     $password = filter_input(INPUT_POST,'password', FILTER_SANITIZE_STRING);
-
-    if(login($name, $password)){
-        $_SESSION['isLoggedIn'] = true;
-        $_SESSION['name'] = $name;
-        header('Location: ../homepage.php');
-    }
-    else{
-        $error = "Error! Incorrect credentials.";
-    }
+    $_SESSION['name'] = $name;
+    $user = login($name, $password);
+    $_SESSION['user'] = $user;
+    header('location: ../homepage.php');
 }
+
+
 ?>
 
 <div id="container">

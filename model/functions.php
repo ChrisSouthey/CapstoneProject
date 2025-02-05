@@ -11,8 +11,10 @@ function login($name, $password) {
     $stmt->bindValue(':pass', sha1($password));
 
     $stmt->execute();
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    return($stmt->rowCount() > 0);
+    return($user);
+    //return($stmt->rowCount() > 0);
 }
 
 function addUser($email, $name, $password){
@@ -70,6 +72,26 @@ function getUser($id){
 
     $binds = array(
         ':id'=> $id
+    );
+
+    if ( $stmt->execute($binds) && $stmt->rowCount() > 0){
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    return $result;
+}
+
+
+function getUserByName($name, $password){
+    global $db;
+
+    $result = [];
+
+    $stmt = $db->prepare("SELECT * FROM users WHERE name = :name AND password = :password");
+
+    $binds = array(
+        ':name'=> $name,
+        ':password'=> $password
     );
 
     if ( $stmt->execute($binds) && $stmt->rowCount() > 0){
