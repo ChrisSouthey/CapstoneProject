@@ -17,10 +17,17 @@ $error = '';
 if(isset($_POST['login'])){
     $name = filter_input(INPUT_POST,'name', FILTER_SANITIZE_STRING);
     $password = filter_input(INPUT_POST,'password', FILTER_SANITIZE_STRING);
+
     $_SESSION['name'] = $name;
-    $user = login($name, $password);
-    $_SESSION['user'] = $user;
-    header('location: ../homepage.php');
+    if(login($name, $password)){
+        $user = login($name, $password);
+        $_SESSION['user'] = $user;
+        header('location: ../homepage.php');
+    }
+    else{
+        $error = "Error! Incorrect credentials.";
+    }
+    
 }
 
 

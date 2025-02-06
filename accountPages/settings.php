@@ -16,7 +16,7 @@ $user = getUser($id);
 
 if($user){
     $name = $user['name'];
-    $password = $user['password'];
+    $password = openssl_decrypt($user['password'], 'aes-256-cbc', 0);
     $email = $user['email'];
 }
 

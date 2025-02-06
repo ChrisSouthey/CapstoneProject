@@ -45,7 +45,7 @@ function updateUser($id, $email, $name, $password) {
 
     $result = '';
 
-    $sql = 'UPDATE users SET email = :e, name = :n, password = :p = :c WHERE id = :id';
+    $sql = 'UPDATE users SET email = :e, name = :n, password = :p WHERE id = :id';
 
     $stmt = $db->prepare($sql);
 
@@ -53,7 +53,7 @@ function updateUser($id, $email, $name, $password) {
         ':id'=> $id,
         ":e" => $email,
         ":n" => $name,
-        ":p" => sha1($password)
+        ":p" => openssl_encrypt($password, 'aes-256-cbc', $key, 0, $iv),
     );
 
     if($stmt->execute($binds) && $stmt->rowCount() > 0){
@@ -115,6 +115,8 @@ function getUsers(){
 
     return $results;
 }
+
+
 
 
 
