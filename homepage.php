@@ -1,3 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
 <?php 
 session_start();
 
@@ -16,12 +27,18 @@ $users = getUsers();
         </div>
     </div>
     <div class="search">
-        <div class="headText">
-            <p>Your ultimate card game database.</p>
+        <div class="searchContainer">
+            <div class="searchBar">
+                <form method="GET">
+                    <input id="search" type="text" name="query" placeholder="Find a Deck">
+                    <input id="submit" type="submit" value="Search">
+                </form>
+            </div>
         </div>
     </div>
     <div class="left">
         <div class="filter">
+            <p>Filter/Search?</p>
 
         </div>
         <div  class="accsettings">
