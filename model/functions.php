@@ -53,7 +53,7 @@ function updateUser($id, $email, $name, $password) {
         ':id'=> $id,
         ":e" => $email,
         ":n" => $name,
-        ":p" => openssl_encrypt($password, 'aes-256-cbc', $key, 0, $iv),
+        ":p" => sha1($password),
     );
 
     if($stmt->execute($binds) && $stmt->rowCount() > 0){

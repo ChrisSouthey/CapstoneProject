@@ -47,6 +47,21 @@ body{
     justify-content:center;
     margin-top:20px;
 }
+.bar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 25px;
+}
+.bar input{
+    box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.25);
+    font-size:40px;
+    border-radius:10px;
+    border:0;
+    padding:10px;
+    padding-right: 300px;
+    margin-right:30px;
+}
 
 /* ---------Filter-------------*/
 .filter{
@@ -55,6 +70,14 @@ body{
     height:717px;
     background-color:#DDDDDD; 
 }
+.filtText{
+    font-family: "Jersey 20";
+    font-size:55px;
+    margin-left:150px;
+}
+
+
+/* ---------Account Settings-------------*/
 .accsettings{
     display:flex;
     height:75px;
@@ -139,13 +162,6 @@ p.register{
     color:#FFFFFF;
     text-decoration:underline;
 }
-
-form{
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    margin-top:180px
-}
 .user{
     display:flex;
     margin-bottom:33px;
@@ -157,33 +173,6 @@ form{
 svg{
     margin-right:18px;
 }
-input{
-    padding:10px
-}
-input[type=text]{
-    box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.25);
-    font-size:30px;
-    border-radius:10px;
-    border:0;
-}
-input[type=password]{
-    box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.25);
-    font-size:30px;
-    border-radius:10px;
-    border:0;
-}
-input[type=submit]{
-    margin-left:66px;
-    font-size:30px;
-    color:white;
-    background-color:#bf0000;
-    border:0;
-    padding:10px;
-}
-input[type=submit]:hover{
-    background-color:#690505;
-    cursor:pointer;
-}
 .error{
     font-family:"Jersey 20";
     font-size:25px;
@@ -192,6 +181,12 @@ input[type=submit]:hover{
 .errLog{
     display:flex;
     align-items:center;
+}
+.eye{
+    margin-left:18px;
+}
+.eye:hover{
+    cursor:pointer;
 }
 
 /* ---------CardInfo-------------*/
