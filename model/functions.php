@@ -11,8 +11,10 @@ function login($name, $password) {
     $stmt->bindValue(':pass', sha1($password));
 
     $stmt->execute();
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    return($stmt->rowCount() > 0);
+    return($user);
+    //return($stmt->rowCount() > 0);
 }
 
 function addUser($email, $name, $password){
@@ -43,7 +45,7 @@ function updateUser($id, $email, $name, $password) {
 
     $result = '';
 
-    $sql = 'UPDATE users SET email = :e, name = :n, password = :p = :c WHERE id = :id';
+    $sql = 'UPDATE users SET email = :e, name = :n, password = :p WHERE id = :id';
 
     $stmt = $db->prepare($sql);
 
@@ -51,7 +53,7 @@ function updateUser($id, $email, $name, $password) {
         ':id'=> $id,
         ":e" => $email,
         ":n" => $name,
-        ":p" => sha1($password)
+        ":p" => openssl_encrypt($password, 'aes-256-cbc', $key, 0, $iv),
     );
 
     if($stmt->execute($binds) && $stmt->rowCount() > 0){
@@ -79,6 +81,26 @@ function getUser($id){
     return $result;
 }
 
+
+function getUserByName($name, $password){
+    global $db;
+
+    $result = [];
+
+    $stmt = $db->prepare("SELECT * FROM users WHERE name = :name AND password = :password");
+
+    $binds = array(
+        ':name'=> $name,
+        ':password'=> $password
+    );
+
+    if ( $stmt->execute($binds) && $stmt->rowCount() > 0){
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    return $result;
+}
+
 function getUsers(){
 
     global $db;
@@ -93,6 +115,8 @@ function getUsers(){
 
     return $results;
 }
+
+
 
 
 

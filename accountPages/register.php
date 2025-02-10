@@ -34,7 +34,7 @@ if(isset($_POST["register"])){
 
     if($error == ""){
        addUser($email, $name, $password);
-        header('Location: ../index.php');
+        header('Location: ../accountPages/login.php');
         exit(); 
     }
     

@@ -74,6 +74,9 @@ body{
 .accsettings svg{
     margin-left:15px;
 }
+.logout{
+    margin-left:15px;
+}
 
 
 /* ---------MainBox-------------*/
