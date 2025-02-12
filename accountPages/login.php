@@ -1,7 +1,8 @@
 <?php 
 session_start();
+
 include '../includes/header.php'; 
-include '../includes/style grid.php'; 
+ 
 include '../model/functions.php';
 
 $email = "";
@@ -30,7 +31,7 @@ if(isset($_POST['login'])){
     
 }
 
-
+include '../includes/style grid.php';
 ?>
 
 <div id="container">

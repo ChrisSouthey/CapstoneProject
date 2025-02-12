@@ -2,7 +2,6 @@
 session_start();
 
 include '../includes/header.php'; 
-include '../includes/style grid.php'; 
 include '../model/functions.php'; 
 
 $name = "";
@@ -41,7 +40,7 @@ if(isset($_POST["register"])){
 }
 
 
-
+include '../includes/style grid.php'; 
 
 ?>
 

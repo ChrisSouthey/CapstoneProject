@@ -2,12 +2,12 @@
 session_start();
 
 include '../includes/header.php'; 
-include '../includes/style grid.php'; 
 include '../model/functions.php';
 
 $name = "";
 $password = "";
 $email = "";
+$regex = "/^\\S+@\\S+\\.\\S+$/";
 $error = "";
 
 
@@ -24,7 +24,7 @@ if($user){
 $pass = $_SESSION['password'];
 
 
-if(isset($_POST["register"])){
+if(isset($_POST["edit"])){
     //INPUT FILTER STUFF
     if(filter_input(INPUT_POST, 'name') != ''){
         $name = filter_input(INPUT_POST, 'name');
@@ -45,15 +45,21 @@ if(isset($_POST["register"])){
         $error .= 'Please enter valid Email. <br/>';
     }
 
-    if($error == ""){
+    if(isset($_POST['name'])){
+        $name = filter_input(INPUT_POST, 'name');
+        $password = filter_input(INPUT_POST, 'password');
+        $email = filter_input(INPUT_POST, 'email');
+
+        if($error == ""){
         updateUser($id, $email, $name, $password);
-        header('Location: ../accountPages/settings.php');
+        $_SESSION['password'] = $password;
+        header('Location: ../homepage.php');
         exit(); 
+        }
     }
-    
 }
 
-var_dump($email);
+include '../includes/style grid.php'; 
 ?>
 
 
