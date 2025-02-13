@@ -5,6 +5,19 @@ include 'includes/header.php';
 include 'includes/style homepage.php'; 
 include 'model/functions.php';
 
+$game = filter_input(INPUT_GET,'game');
+
+$url = "https://apitcg.com/api/" . $game . "/cards";
+$apiKey = "2f519d7b5e1fefc31c708df4179a0bebe5ba7f7548ea7b659c10f7073b1fcb5a";
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+curl_setopt($ch, CURLOPT_URL, $url);
+curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
+curl_setopt($ch, CURLOPT_USERPWD, $apiKey . ":");
+ 
+$result = curl_exec($ch);
+ 
+echo $result; 
 
 
 $userID = $_SESSION['user']['id'];
@@ -23,6 +36,18 @@ $userID = $_SESSION['user']['id'];
             <form method="POST">
                 <input type="text" name="search" placeholder="Search for a Card">
             </form>
+            <select id="game" name="game" onchange="getGame()">
+                <option id="opt" value="" disabled selected>Select a game</option>
+                <option id="opt" value="magic">Magic</option>
+                <option id="opt" value="one-piece">One Piece</option>
+                <option id="opt" value="pokemon">Pokemon</option>
+                <option id="opt" value="union-arena">Union Arena</option>
+                <option id="opt" value="dragon-ball-fusion">Dragon Ball Fusion</option>
+                <option id="opt" value="digimon">Digimon</option>
+            </select>
+            <div hidden>
+                <p>HELLO</p>
+            </div>
         </div>
     </div>
     <div class="left">
@@ -41,8 +66,26 @@ $userID = $_SESSION['user']['id'];
     <div class="cardinfo">
 
     </div>
+    
 
 </div>
+<script>
+    var gameSel = document.getElementById("game");
+    var opt = document.getElementById("opt");
+    function getGame(){
+        var game = gameSel.value;
+        console.log(game);
+        window.location = "homepage.php?game=" + game
+    }
+    opt.addEventListener('onChange', function(){
+        var game = gameSel.value;
+        console.log(game);
+        window.location = "homepage.php?game=" + game
+    })
+    
+    
+    
+</script>
 
 
 <?php include 'includes/footer.php'; ?>

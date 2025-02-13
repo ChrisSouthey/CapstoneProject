@@ -49,7 +49,6 @@ body{
 }
 .bar{
     display: flex;
-    justify-content: center;
     align-items: center;
     margin-top: 25px;
 }
@@ -59,9 +58,20 @@ body{
     border-radius:10px;
     border:0;
     padding:10px;
-    padding-right: 300px;
+    padding-right: 100px;
     margin-right:30px;
 }
+.bar svg{
+    margin-left: 15px;
+}
+.bar select{
+    box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.25);
+    font-size:20px;
+    border-radius:10px;
+    border:0;
+    padding:10px;
+}
+
 
 /* ---------Filter-------------*/
 .filter{
