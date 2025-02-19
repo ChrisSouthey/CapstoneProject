@@ -23,7 +23,7 @@ echo $result;
 $userID = $_SESSION['user']['id'];
 
 ?>
-
+<script defer src="filters.js"></script>
 <div id="container">
     <div class="logo">
         <div class="logotext">
@@ -55,57 +55,41 @@ $userID = $_SESSION['user']['id'];
     <div class="filtText">
         <p>My Collection</p>
     </div>
-    <div class="dropdown-container">
-        <div class="dropdown">
-            <div class="dropdown-header" onclick="toggleDropdown('game-name')">
-                &#9654; Game Name
-            </div>
-            <div class="dropdown-content" id="game-name">
-                <label><input type="checkbox"> Pokemon</label>
-                <label><input type="checkbox"> Magic the Gathering</label>
-                <label><input type="checkbox"> One Piece</label>
-                <label><input type="checkbox"> Game 3</label>
-                <label><input type="checkbox"> Game 4</label>
-                <label><input type="checkbox"> Game 5</label>
-            </div>
+    <form id="filterForm">
+        <!-- Game Name Dropdown -->
+        <label for="gameName">Game Name:</label>
+        <select id="gameName" name="gameName">
+            <option value="">Select a Game</option>
+            <option value="pokemon">Pokemon</option>
+            <option value="onepiece">One Piece</option>
+            <option value="mtg">Magic The Gathering</option>
+            <option value="game4">Game 4</option>
+            <option value="game5">Game 5</option>
+            <option value="game6">Game 6</option>
+            <option value="game7">Game 7</option>
+        </select>
+
+        <!-- Card Type Checkboxes -->
+        <div id="cardTypeContainer">
+            <h3>Card Type</h3>
+            <div id="cardType"></div>
         </div>
-        <div class="dropdown">
-            <div class="dropdown-header" onclick="toggleDropdown('card-type')">
-                &#9654; Card Type
-            </div>
-            <div class="dropdown-content" id="card-type">
-                <label><input type="checkbox"> Type A</label>
-                <label><input type="checkbox"> Type B</label>
-                <label><input type="checkbox"> Type C</label>
-                <label><input type="checkbox"> Type D</label>
-                <label><input type="checkbox"> Type E</label>
-            </div>
+
+        <!-- Card Color Checkboxes -->
+        <div id="cardColorContainer">
+            <h3>Card Color</h3>
+            <div id="cardColor"></div>
         </div>
-        <div class="dropdown">
-            <div class="dropdown-header" onclick="toggleDropdown('card-color')">
-                &#9654; Card Color
-            </div>
-            <div class="dropdown-content" id="card-color">
-                <label><input type="checkbox"> Color A</label>
-                <label><input type="checkbox"> Color B</label>
-                <label><input type="checkbox"> Color C</label>
-                <label><input type="checkbox"> Color D</label>
-                <label><input type="checkbox"> Color E</label>
-            </div>
+
+        <!-- Card Rarity Checkboxes -->
+        <div id="cardRarityContainer">
+            <h3>Card Rarity</h3>
+            <div id="cardRarity"></div>
         </div>
-        <div class="dropdown">
-            <div class="dropdown-header" onclick="toggleDropdown('card-rarity')">
-                &#9654; Card Rarity
-            </div>
-            <div class="dropdown-content" id="card-rarity">
-                <label><input type="checkbox"> Rarity A</label>
-                <label><input type="checkbox"> Rarity B</label>
-                <label><input type="checkbox"> Rarity C</label>
-                <label><input type="checkbox"> Rarity D</label>
-                <label><input type="checkbox"> Rarity E</label>
-            </div>
-        </div>
-    </div>
+
+        <!-- Submit Button -->
+        <button type="submit">Filter Cards</button>
+    </form>
 </div>
 
         <div  class="accsettings">
