@@ -85,6 +85,33 @@ body{
     font-size:55px;
     margin-left:150px;
 }
+.dropdown-container {
+width: 200px;
+    background: #333;
+    padding: 10px;
+    border-radius: 5px;
+}
+.dropdown {
+    margin-bottom: 10px;
+}
+.dropdown-header {
+    background: #444;
+    padding: 8px;
+    cursor: pointer;
+    color: white;
+    border-radius: 3px;
+}
+.dropdown-content {
+    display: none;
+    padding: 5px;
+    background: #555;
+    border-radius: 3px;
+}
+.dropdown-content label {
+    display: block;
+    color: white;
+    padding: 2px;
+}
 
 
 /* ---------Account Settings-------------*/

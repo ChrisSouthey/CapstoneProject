@@ -6,18 +6,24 @@ include 'includes/style homepage.php';
 include 'model/functions.php';
 
 $game = filter_input(INPUT_GET,'game');
+$search = filter_input(INPUT_POST, 'search');
 
-$url = "https://apitcg.com/api/" . $game . "/cards";
+if(!$game == ""){
+    
+}
+
+
 $apiKey = "2f519d7b5e1fefc31c708df4179a0bebe5ba7f7548ea7b659c10f7073b1fcb5a";
-$ch = curl_init();
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-curl_setopt($ch, CURLOPT_URL, $url);
-curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
-curl_setopt($ch, CURLOPT_USERPWD, $apiKey . ":");
- 
-$result = curl_exec($ch);
- 
-echo $result; 
+
+if(isset($_POST['search'])){
+    $options = array('http' => array(
+    'method'  => 'GET',
+    'header' => 'x-api-key:' . $apiKey
+    ));
+    $context  = stream_context_create($options);
+    $response = file_get_contents("https://apitcg.com/api/" . $game . "/cards?name=" . $search,false, $context);
+    var_dump($response);
+}
 
 
 $userID = $_SESSION['user']['id'];
@@ -45,9 +51,6 @@ $userID = $_SESSION['user']['id'];
                 <option id="opt" value="dragon-ball-fusion">Dragon Ball Fusion</option>
                 <option id="opt" value="digimon">Digimon</option>
             </select>
-            <div hidden>
-                <p>HELLO</p>
-            </div>
         </div>
     </div>
     <div class="left">
@@ -105,48 +108,19 @@ $userID = $_SESSION['user']['id'];
     
 
 </div>
-<style>
-    .dropdown-container {
-        width: 200px;
-        background: #333;
-        padding: 10px;
-        border-radius: 5px;
-    }
-    .dropdown {
-        margin-bottom: 10px;
-    }
-    .dropdown-header {
-        background: #444;
-        padding: 8px;
-        cursor: pointer;
-        color: white;
-        border-radius: 3px;
-    }
-    .dropdown-content {
-        display: none;
-        padding: 5px;
-        background: #555;
-        border-radius: 3px;
-    }
-    .dropdown-content label {
-        display: block;
-        color: white;
-        padding: 2px;
-    }
-</style>
+
 <script>
     var gameSel = document.getElementById("game");
     var opt = document.getElementById("opt");
     function getGame(){
         var game = gameSel.value;
         console.log(game);
-        window.location = "homepage.php?game=" + game
+        localStorage.setItem('gameName', game);
+        window.location = "homepage.php?game=" + game;
     }
-    opt.addEventListener('onChange', function(){
-        var game = gameSel.value;
-        console.log(game);
-        window.location = "homepage.php?game=" + game
-    })
+    
+
+    
 
     function toggleDropdown(id) {
         var content = document.getElementById(id);
