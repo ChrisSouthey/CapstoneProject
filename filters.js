@@ -22,12 +22,17 @@ document.addEventListener("DOMContentLoaded", () => {
             cardColor: ["Red", "Green", "Blue", "Purple", "Black", "Yellow"],
             cardRarity: ["Common", "Uncommon", "Rare", "Super Rare", "Secret Rare", "Leader", "Don Cards", "Manga Cards"]
         },
-        game4: {
-            cardType: ["Option 4.1", "Option 4.2", "Option 4.3", "Option 4.4"],
-            cardColor: ["Option 4.1", "Option 4.2", "Option 4.3", "Option 4.4"],
-            cardRarity: ["Option 4.1", "Option 4.2", "Option 4.3", "Option 4.4"]
+        unionarena: {
+            cardType: ["Character Cards", "Event Cards", "Field Cards", "Site Cards"],
+            cardColor: ["Red", "Blue", "Yellow", "Green", "Purple"],
+            cardRarity: ["Common", "Uncommon", "Rare", "Super Rare", "Action Point"]
         },
-        game5: {
+        dbf: {
+            cardType: ["Super", "Earth", "Alien", "Unique", "Villain"],
+            cardColor: ["Red", "Blue", "Green", "Yellow"],
+            cardRarity: ["Leader Cards", "Common", "Uncommon", "Rare", "Super Rare", "Secret Rare", "Promotion"]
+        },
+        digimon: {
             cardType: ["Option 5.1", "Option 5.2", "Option 5.3", "Option 5.4"],
             cardColor: ["Option 5.1", "Option 5.2", "Option 5.3", "Option 5.4"],
             cardRarity: ["Option 5.1", "Option 5.2", "Option 5.3", "Option 5.4"]
@@ -51,7 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
         addCheckboxes(cardTypeDiv, cardType, "cardType");
         addCheckboxes(cardRarityDiv, cardRarity, "cardRarity");
 
-        // Hide Card Color if the game is Pokemon
+        // Hide Card Color if the game is Pokemon for filtering
         if (selectedGame === "pokemon") {
             cardColorContainer.style.display = "none";
         } else {

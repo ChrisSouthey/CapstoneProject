@@ -61,12 +61,11 @@ $userID = $_SESSION['user']['id'];
         <select id="gameName" name="gameName">
             <option value="">Select a Game</option>
             <option value="pokemon">Pokemon</option>
-            <option value="onepiece">One Piece</option>
+            <option value="onepiece">One Piece Trading Card Game</option>
             <option value="mtg">Magic The Gathering</option>
-            <option value="game4">Game 4</option>
-            <option value="game5">Game 5</option>
-            <option value="game6">Game 6</option>
-            <option value="game7">Game 7</option>
+            <option value="unionarena">Union Arena</option>
+            <option value="dbf">Dragon Ball Fusion</option>
+            <option value="digimon">Digimon</option>
         </select>
 
         <!-- Card Type Checkboxes -->
@@ -105,35 +104,7 @@ $userID = $_SESSION['user']['id'];
     
 
 </div>
-<style>
-    .dropdown-container {
-        width: 200px;
-        background: #333;
-        padding: 10px;
-        border-radius: 5px;
-    }
-    .dropdown {
-        margin-bottom: 10px;
-    }
-    .dropdown-header {
-        background: #444;
-        padding: 8px;
-        cursor: pointer;
-        color: white;
-        border-radius: 3px;
-    }
-    .dropdown-content {
-        display: none;
-        padding: 5px;
-        background: #555;
-        border-radius: 3px;
-    }
-    .dropdown-content label {
-        display: block;
-        color: white;
-        padding: 2px;
-    }
-</style>
+
 <script>
     var gameSel = document.getElementById("game");
     var opt = document.getElementById("opt");
