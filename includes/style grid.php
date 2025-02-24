@@ -53,7 +53,7 @@ body{
 .filter{
     grid-area:f;
     width:415px;
-    height:717px;
+    height:730px;
     background-color:#DDDDDD; 
 }
 .accsettings{
@@ -89,7 +89,7 @@ body{
 .mainbox{
     grid-area:m;
     width:950px;
-    height:850px;
+    height:800px;
     background:#f3f4f5;
 }
 .infoBox{
@@ -210,7 +210,7 @@ input[type=submit]:hover{
 .cardinfo{
     grid-area:c;
     width:510px;
-    height:850px;
+    height:926px;
     background-color:#DDDDDD;
 }
 
@@ -219,7 +219,6 @@ input[type=submit]:hover{
     display:grid;
     grid-template-areas:
     'l l s s s c c c'
-    'f f m m m c c c'
     'f f m m m c c c'
     'f f m m m c c c'
     'f f m m m c c c'

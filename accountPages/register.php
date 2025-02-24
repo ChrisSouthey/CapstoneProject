@@ -40,7 +40,7 @@ if(isset($_POST["register"])){
 }
 
 
-include '../includes/style grid.php'; 
+include '../includes/style loginRegister.php'; 
 
 ?>
 

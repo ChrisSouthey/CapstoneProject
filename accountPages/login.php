@@ -31,7 +31,7 @@ if(isset($_POST['login'])){
     
 }
 
-include '../includes/style grid.php';
+include '../includes/style loginRegister.php';
 ?>
 
 <div id="container">

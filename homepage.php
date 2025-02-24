@@ -8,6 +8,9 @@ include 'model/functions.php';
 $game = filter_input(INPUT_GET,'game');
 $search = filter_input(INPUT_POST, 'search');
 $error = "";
+$data = "";
+$cardImg = "";
+$cardName = "";
 
 
 $apiKey = "2f519d7b5e1fefc31c708df4179a0bebe5ba7f7548ea7b659c10f7073b1fcb5a";
@@ -15,23 +18,42 @@ $apiKey = "2f519d7b5e1fefc31c708df4179a0bebe5ba7f7548ea7b659c10f7073b1fcb5a";
 if(isset($_POST['search'])){
     if($game == ""){
         $error = "Please select a game.";
+        }
+        else{
+            $options = array('http' => array(
+            'method'  => 'GET',
+            'header' => 'x-api-key:' . $apiKey
+            ));
+            $context  = stream_context_create($options);
+            $response = file_get_contents("https://apitcg.com/api/" . $game . "/cards?name=" . $search,false, $context);
+            $results = json_decode($response, true);
+            if($results == ""){
+                $error = "Error";
+            }
+            else{
+                if($game == "magic"){
+                    if ($results && isset($results['data'])) {
+                        foreach ($results['data'] as $card){
+                            $cardName = $card['name'];
+                            $cardImg = $card['image_uris']['normal'];
+                        }
+                    }  
+                }
+                else{
+                    if ($results && isset($results['data'])) {
+                        foreach ($results['data'] as $card){
+                            $cardName = $card['name'];
+                            $cardImg = $card['images']['small'];
+                        }
+                    }  
+                }
+            }
+            
     }
-    else{
-        $options = array('http' => array(
-        'method'  => 'GET',
-        'header' => 'x-api-key:' . $apiKey
-        ));
-        $context  = stream_context_create($options);
-        $response = file_get_contents("https://apitcg.com/api/" . $game . "/cards?name=" . $search,false, $context);
-        $results = json_decode($response, true);
-        $cardName = $results['data']["name"];
-        var_dump($results);
-        var_dump($cardName);
-    }  
+
 }
-
-
-
+//var_dump($results);
+//var_dump($cardName, $cardImg);
 $userID = $_SESSION['user']['id'];
 
 ?>
@@ -111,10 +133,18 @@ $userID = $_SESSION['user']['id'];
 
     </div>
     <div class="cardinfo">
-        <?php foreach((array) $results as $result): ?>
-            <h4><?= $result['name']; ?></h4>
-            <img src="<?= $result['images']?>">
-        <?php endforeach; ?>
+    <?php 
+    if (empty($results)) {
+        $error = "Results empty";
+    } 
+    else{
+        foreach ((array) $results as $result): ?>
+        <h3><?= htmlspecialchars($cardName); ?></h3>
+        <img src="<?= htmlspecialchars($cardImg); ?>">
+        <?php endforeach; 
+    }
+?>
+
     </div>
     
 
@@ -123,10 +153,15 @@ $userID = $_SESSION['user']['id'];
 <script>
     var gameSel = document.getElementById("game");
     var opt = document.getElementById("opt");
+    const selectedGame = localStorage.getItem('gameName');
+    if (selectedGame){
+
+    }
+    gameSel.value = selectedGame;
     function getGame(){
         var game = gameSel.value;
         console.log(game);
-        localStorage.setItem('gameName', game);
+        localStorage.setItem('gameName', gameSel.value);
         window.location = "homepage.php?game=" + game;
     }
     

@@ -47,87 +47,15 @@ body{
     justify-content:center;
     margin-top:20px;
 }
-.bar{
-    display: flex;
-    align-items: center;
-    margin-top: 25px;
-}
-.bar input{
-    box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.25);
-    font-size:40px;
-    border-radius:10px;
-    border:0;
-    padding:10px;
-    padding-right: 100px;
-    margin-right:30px;
-}
-.bar svg{
-    margin-left: 15px;
-}
-.bar select{
-    box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.25);
-    font-size:20px;
-    border-radius:10px;
-    border:0;
-    padding:10px;
-}
-.searcherr{
-    display: flex;
-    flex-direction: column;
-    font-family: "Jersey 20";
-    color: white;
-    font-size: 20px;
-}
-.searcherr p{
-    margin-left: 80px;
-    margin-top: 5px;
-}
-.barsvg{
-    display: flex;
-}
+
 
 /* ---------Filter-------------*/
 .filter{
     grid-area:f;
     width:415px;
-    height:730px;
+    height:805px;
     background-color:#DDDDDD; 
 }
-.filtText{
-    font-family: "Jersey 20";
-    font-size:55px;
-    margin-left:150px;
-}
-.dropdown-container {
-width: 200px;
-    background: #333;
-    padding: 10px;
-    border-radius: 5px;
-}
-.dropdown {
-    margin-bottom: 10px;
-}
-.dropdown-header {
-    background: #444;
-    padding: 8px;
-    cursor: pointer;
-    color: white;
-    border-radius: 3px;
-}
-.dropdown-content {
-    display: none;
-    padding: 5px;
-    background: #555;
-    border-radius: 3px;
-}
-.dropdown-content label {
-    display: block;
-    color: white;
-    padding: 2px;
-}
-
-
-/* ---------Account Settings-------------*/
 .accsettings{
     display:flex;
     height:75px;
@@ -144,6 +72,11 @@ width: 200px;
     color:#bf0000;
     text-decoration:underline;
 }
+.pipe{
+    color:white;
+    font-family:"Jersey 20";
+    margin-left:10px;
+}
 .accsettings svg{
     margin-left:15px;
 }
@@ -156,7 +89,7 @@ width: 200px;
 .mainbox{
     grid-area:m;
     width:950px;
-    height:780px;
+    height:800px;
     background:#f3f4f5;
 }
 .infoBox{
@@ -204,6 +137,10 @@ p.register{
     color:#BF0000;
     text-decoration:none;
 }
+.register a:hover{
+    color:#FFFFFF;
+    text-decoration:underline;
+}
 .login a{
     color:#BF0000;
     text-decoration:none;
@@ -211,6 +148,13 @@ p.register{
 .login a:hover{
     color:#FFFFFF;
     text-decoration:underline;
+}
+
+form{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    margin-top:180px
 }
 .user{
     display:flex;
@@ -222,6 +166,33 @@ p.register{
 }
 svg{
     margin-right:18px;
+}
+input{
+    padding:10px
+}
+input[type=text]{
+    box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.25);
+    font-size:30px;
+    border-radius:10px;
+    border:0;
+}
+input[type=password]{
+    box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.25);
+    font-size:30px;
+    border-radius:10px;
+    border:0;
+}
+input[type=submit]{
+    margin-left:66px;
+    font-size:30px;
+    color:white;
+    background-color:#bf0000;
+    border:0;
+    padding:10px;
+}
+input[type=submit]:hover{
+    background-color:#690505;
+    cursor:pointer;
 }
 .error{
     font-family:"Jersey 20";
@@ -245,7 +216,6 @@ svg{
     width:510px;
     height:926px;
     background-color:#DDDDDD;
-    overflow-y: auto;
 }
 
 /* ---------Container/Body-------------*/
@@ -256,13 +226,11 @@ svg{
     'f f m m m c c c'
     'f f m m m c c c'
     'f f m m m c c c'
-    'f f m m m c c c'
     'f f m m m c c c';
     background-color: #f3f4f5;
     height:100%;
     width:100%;
 }
-
 
 
 
