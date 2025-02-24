@@ -7,22 +7,26 @@ include 'model/functions.php';
 
 $game = filter_input(INPUT_GET,'game');
 $search = filter_input(INPUT_POST, 'search');
-
-if(!$game == ""){
-    
-}
+$error = "";
 
 
 $apiKey = "2f519d7b5e1fefc31c708df4179a0bebe5ba7f7548ea7b659c10f7073b1fcb5a";
 
 if(isset($_POST['search'])){
-    $options = array('http' => array(
-    'method'  => 'GET',
-    'header' => 'x-api-key:' . $apiKey
-    ));
-    $context  = stream_context_create($options);
-    $response = file_get_contents("https://apitcg.com/api/" . $game . "/cards?name=" . $search,false, $context);
-    var_dump($response);
+    if($game == ""){
+        $error = "Please select a game.";
+    }
+    else{
+        $options = array('http' => array(
+        'method'  => 'GET',
+        'header' => 'x-api-key:' . $apiKey
+        ));
+        $context  = stream_context_create($options);
+        $response = file_get_contents("https://apitcg.com/api/" . $game . "/cards?name=" . $search,false, $context);
+        $results = json_decode($response, true);
+        //$cardName = $result["name"];
+        var_dump($results);
+    }  
 }
 
 
@@ -42,6 +46,9 @@ $userID = $_SESSION['user']['id'];
             <form method="POST">
                 <input type="text" name="search" placeholder="Search for a Card">
             </form>
+
+            <p><?= $error ?></p>
+            
             <select id="game" name="game" onchange="getGame()">
                 <option id="opt" value="" disabled selected>Select a game</option>
                 <option id="opt" value="magic">Magic</option>
@@ -102,7 +109,10 @@ $userID = $_SESSION['user']['id'];
 
     </div>
     <div class="cardinfo">
-
+        <?php foreach((array) $results as $result): ?>
+            <h4><?= $result['name']; ?></h4>
+            <img src="<?= $result['images']?>">
+        <?php endforeach; ?>
     </div>
     
 
@@ -118,7 +128,6 @@ $userID = $_SESSION['user']['id'];
         window.location = "homepage.php?game=" + game;
     }
     
-
     
 
     function toggleDropdown(id) {

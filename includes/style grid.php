@@ -84,7 +84,7 @@ body{
 .mainbox{
     grid-area:m;
     width:950px;
-    height:805px;
+    height:850px;
     background:#f3f4f5;
 }
 .infoBox{
@@ -204,8 +204,8 @@ input[type=submit]:hover{
 /* ---------CardInfo-------------*/
 .cardinfo{
     grid-area:c;
-    width:555px;
-    height:917px;
+    width:510px;
+    height:850px;
     background-color:#DDDDDD;
 }
 

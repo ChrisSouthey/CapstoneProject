@@ -71,7 +71,20 @@ body{
     border:0;
     padding:10px;
 }
-
+.searcherr{
+    display: flex;
+    flex-direction: column;
+    font-family: "Jersey 20";
+    color: white;
+    font-size: 20px;
+}
+.searcherr p{
+    margin-left: 80px;
+    margin-top: 5px;
+}
+.barsvg{
+    display: flex;
+}
 
 /* ---------Filter-------------*/
 .filter{
@@ -143,7 +156,7 @@ width: 200px;
 .mainbox{
     grid-area:m;
     width:950px;
-    height:805px;
+    height:780px;
     background:#f3f4f5;
 }
 .infoBox{
