@@ -24,10 +24,12 @@ if(isset($_POST['search'])){
         $context  = stream_context_create($options);
         $response = file_get_contents("https://apitcg.com/api/" . $game . "/cards?name=" . $search,false, $context);
         $results = json_decode($response, true);
-        //$cardName = $result["name"];
+        $cardName = $results['data']["name"];
         var_dump($results);
+        var_dump($cardName);
     }  
 }
+
 
 
 $userID = $_SESSION['user']['id'];

@@ -72,6 +72,11 @@ body{
     color:#bf0000;
     text-decoration:underline;
 }
+.pipe{
+    color:white;
+    font-family:"Jersey 20";
+    margin-left:10px;
+}
 .accsettings svg{
     margin-left:15px;
 }
