@@ -25,7 +25,13 @@ if(isset($_POST['search'])){
             'header' => 'x-api-key:' . $apiKey
             ));
             $context  = stream_context_create($options);
-            $response = file_get_contents("https://apitcg.com/api/" . $game . "/cards?name=" . $search,false, $context);
+            if($search == ""){
+                $response = file_get_contents("https://apitcg.com/api/" . $game . "/cards",false, $context);
+            }
+            else{
+                $response = file_get_contents("https://apitcg.com/api/" . $game . "/cards?name=" . $search,false, $context);
+            }
+            
             $results = json_decode($response, true);
             if($results == ""){
                 $error = "Error";
