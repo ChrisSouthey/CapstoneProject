@@ -26,7 +26,6 @@ if(isset($_POST['search'])){
         ));
         $context  = stream_context_create($options);
 
-        
         if($search == ""){
             $response = file_get_contents("https://apitcg.com/api/" . $game . "/cards?limit=30",false, $context);
         }
@@ -54,7 +53,7 @@ if(isset($_POST['search'])){
         }
     }
 }
-//var_dump($results);
+var_dump($results);
 //var_dump($cardName, $cardImg);
 //var_dump($search);
 $userID = $_SESSION['user']['id'];
@@ -145,6 +144,7 @@ $userID = $_SESSION['user']['id'];
         $error = "Results empty";
     } 
     else{
+
         foreach((array) $results['data'] as $card): ?>
         <h3 class="cardName"><?= htmlspecialchars($cardName); ?></h3>
         <img class="cardImg" src="<?= htmlspecialchars($cardImg); ?>" value="hi">
