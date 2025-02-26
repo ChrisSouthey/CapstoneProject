@@ -33,9 +33,9 @@ document.addEventListener("DOMContentLoaded", () => {
             cardRarity: ["Leader Cards", "Common", "Uncommon", "Rare", "Super Rare", "Secret Rare", "Promotion"]
         },
         digimon: {
-            cardType: ["Option 5.1", "Option 5.2", "Option 5.3", "Option 5.4"],
-            cardColor: ["Option 5.1", "Option 5.2", "Option 5.3", "Option 5.4"],
-            cardRarity: ["Option 5.1", "Option 5.2", "Option 5.3", "Option 5.4"]
+            cardType: ["Digimon", "Digi-Egg", "Option", "Tamer"],
+            cardColor: ["Black", "Blue", "Green", "Purple", "Red", "White", "Yellow", "Colorless"],
+            cardRarity: ["Common", "Uncommon", "Rare", "Super Rare", "Secret Rare", "Parallel Art"]
         }
     };
 

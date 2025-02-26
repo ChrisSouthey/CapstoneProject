@@ -93,6 +93,7 @@ $userID = $_SESSION['user']['id'];
     <div class="filtText">
         <p>My Collection</p>
     </div>
+    <div style="margin-bottom:10px">
     <form id="filterForm">
         <!-- Game Name Dropdown -->
         <label for="gameName">Game Name:</label>
@@ -105,23 +106,25 @@ $userID = $_SESSION['user']['id'];
             <option value="dbf">Dragon Ball Fusion</option>
             <option value="digimon">Digimon</option>
         </select>
+    </div>
 
         <!-- Card Type Checkboxes -->
         <div id="cardTypeContainer">
             <h3>Card Type</h3>
-            <div id="cardType"></div>
+            <div id="cardType" style="margin-bottom:20px">
+            </div>
         </div>
 
         <!-- Card Color Checkboxes -->
         <div id="cardColorContainer">
             <h3>Card Color</h3>
-            <div id="cardColor"></div>
+            <div id="cardColor" style="margin-bottom:20px"></div>
         </div>
 
         <!-- Card Rarity Checkboxes -->
         <div id="cardRarityContainer">
             <h3>Card Rarity</h3>
-            <div id="cardRarity"></div>
+            <div id="cardRarity" style="margin-bottom:20px"></div>
         </div>
 
         <!-- Submit Button -->
