@@ -11,6 +11,7 @@ $error = "";
 $cards = [];
 $cardImg = "";
 $cardName = "";
+$cardID = "";
 
 
 $apiKey = "2f519d7b5e1fefc31c708df4179a0bebe5ba7f7548ea7b659c10f7073b1fcb5a";
@@ -42,18 +43,22 @@ if(isset($_POST['search'])){
                 foreach ($results['data'] as $card){
                     $cardName = $card['name'];
                     $cardImg = $card['image_uris']['png'];
+                    $cardID = $card['id'];
+                    //var_dump($cardName, $cardImg, $cardID);
                 }
             }
             else{
                 foreach ($results['data'] as $card) {
                     $cardName = $card['name'];
                     $cardImg = $card['images']['small'];
+                    $cardID = $card['id'];
+                    var_dump($cardName, $cardImg, $cardID);
                 }
             }
         }
     }
 }
-var_dump($results);
+//var_dump($results);
 //var_dump($cardName, $cardImg);
 //var_dump($search);
 $userID = $_SESSION['user']['id'];
@@ -140,14 +145,18 @@ $userID = $_SESSION['user']['id'];
     </div>
     <div class="cardinfo">
     <?php 
+    //var_dump($results['data']);
     if (empty($results)) {
         $error = "Results empty";
     } 
     else{
 
         foreach((array) $results['data'] as $card): ?>
-        <h3 class="cardName"><?= htmlspecialchars($cardName); ?></h3>
-        <img class="cardImg" src="<?= htmlspecialchars($cardImg); ?>" value="hi">
+        <?= "Processing: " . $cardName . "<br>";?>
+        <div class="card">
+            <h3 class="cardName"><?= htmlspecialchars($card[$cardName]); ?></h3>
+            <img class="cardImg" src="<?= htmlspecialchars($card[$cardImg]); ?>">
+        </div>
         <?php endforeach; 
     }
 ?>
