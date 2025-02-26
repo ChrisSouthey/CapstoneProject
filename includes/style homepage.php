@@ -96,9 +96,11 @@ body{
 .filtText{
     font-family: "Jersey 20";
     font-size:56px;
+    font-size:56px;
     margin-left:150px;
 }
 .dropdown-container {
+    width: 200px;
     width: 200px;
     background: #333;
     padding: 10px;
@@ -124,6 +126,7 @@ body{
     display: block;
     color: white;
     padding: 2px;
+    margin-top:20px;
     margin-top:20px;
 }
 
