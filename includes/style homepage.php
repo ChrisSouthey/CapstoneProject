@@ -246,6 +246,20 @@ svg{
     height:926px;
     background-color:#DDDDDD;
     overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.cardName{
+    font-family: "Jersey 20";
+    font-size:30px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+.cardImg{
+    height: 500px;
+    width: 400px;
+    margin-bottom: 40px;
 }
 
 /* ---------Container/Body-------------*/

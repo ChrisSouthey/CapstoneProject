@@ -8,7 +8,7 @@ include 'model/functions.php';
 $game = filter_input(INPUT_GET,'game');
 $search = filter_input(INPUT_POST, 'search');
 $error = "";
-$data = "";
+$cards = [];
 $cardImg = "";
 $cardName = "";
 
@@ -18,48 +18,45 @@ $apiKey = "2f519d7b5e1fefc31c708df4179a0bebe5ba7f7548ea7b659c10f7073b1fcb5a";
 if(isset($_POST['search'])){
     if($game == ""){
         $error = "Please select a game.";
+    }
+    else{
+        $options = array('http' => array(
+        'method'  => 'GET',
+        'header' => 'x-api-key:' . $apiKey
+        ));
+        $context  = stream_context_create($options);
+
+        
+        if($search == ""){
+            $response = file_get_contents("https://apitcg.com/api/" . $game . "/cards?limit=30",false, $context);
         }
         else{
-            $options = array('http' => array(
-            'method'  => 'GET',
-            'header' => 'x-api-key:' . $apiKey
-            ));
-            $context  = stream_context_create($options);
-            if($search == ""){
-                $response = file_get_contents("https://apitcg.com/api/" . $game . "/cards",false, $context);
-            }
-            else{
-                $response = file_get_contents("https://apitcg.com/api/" . $game . "/cards?name=" . $search,false, $context);
-            }
-            
-            $results = json_decode($response, true);
-            if($results == ""){
-                $error = "Error";
-            }
-            else{
-                if($game == "magic"){
-                    if ($results && isset($results['data'])) {
-                        foreach ($results['data'] as $card){
-                            $cardName = $card['name'];
-                            $cardImg = $card['image_uris']['normal'];
-                        }
-                    }  
-                }
-                else{
-                    if ($results && isset($results['data'])) {
-                        foreach ($results['data'] as $card){
-                            $cardName = $card['name'];
-                            $cardImg = $card['images']['small'];
-                        }
-                    }  
+            $response = file_get_contents("https://apitcg.com/api/" . $game . "/cards?name=" . $search . "&limit=30",false, $context);
+        }
+        
+        $results = json_decode($response, true);
+        if($results == ""){
+            $error = "Error";
+        }
+        else{
+            if($game == "magic"){
+                foreach ($results['data'] as $card){
+                    $cardName = $card['name'];
+                    $cardImg = $card['image_uris']['png'];
                 }
             }
-            
+            else{
+                foreach ($results['data'] as $card) {
+                    $cardName = $card['name'];
+                    $cardImg = $card['images']['small'];
+                }
+            }
+        }
     }
-
 }
 //var_dump($results);
 //var_dump($cardName, $cardImg);
+//var_dump($search);
 $userID = $_SESSION['user']['id'];
 
 ?>
@@ -87,6 +84,7 @@ $userID = $_SESSION['user']['id'];
                 <option id="opt" value="union-arena">Union Arena</option>
                 <option id="opt" value="dragon-ball-fusion">Dragon Ball Fusion</option>
                 <option id="opt" value="digimon">Digimon</option>
+                <option id="opt" value="gundam">Gundam</option>
             </select>
         </div>
     </div>
@@ -144,9 +142,9 @@ $userID = $_SESSION['user']['id'];
         $error = "Results empty";
     } 
     else{
-        foreach ((array) $results as $result): ?>
-        <h3><?= htmlspecialchars($cardName); ?></h3>
-        <img src="<?= htmlspecialchars($cardImg); ?>">
+        foreach((array) $results['data'] as $card): ?>
+        <h3 class="cardName"><?= htmlspecialchars($cardName); ?></h3>
+        <img class="cardImg" src="<?= htmlspecialchars($cardImg); ?>" value="hi">
         <?php endforeach; 
     }
 ?>
@@ -171,6 +169,10 @@ $userID = $_SESSION['user']['id'];
         window.location = "homepage.php?game=" + game;
     }
     
+    var img = document.querySelector(".cardImg");
+    img.addEventListener('click', function(){
+        console.log(img.value);
+    })
     
 
     function toggleDropdown(id) {
