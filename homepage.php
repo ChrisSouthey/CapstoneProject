@@ -6,13 +6,12 @@ include 'includes/style homepage.php';
 include 'model/functions.php';
 
 $game = filter_input(INPUT_GET,'game');
-$search = filter_input(INPUT_POST, 'search');
+$entry = filter_input(INPUT_POST, 'search');
+$search = strtolower(str_replace(" ", '-', $entry));
 $error = "";
-$cards = [];
 $cardImg = "";
 $cardName = "";
 $cardID = "";
-
 
 $apiKey = "2f519d7b5e1fefc31c708df4179a0bebe5ba7f7548ea7b659c10f7073b1fcb5a";
 
@@ -44,7 +43,7 @@ if(isset($_POST['search'])){
                     $cardName = $card['name'];
                     $cardImg = $card['image_uris']['png'];
                     $cardID = $card['id'];
-                    //var_dump($cardName, $cardImg, $cardID);
+                    var_dump($cardName, $cardImg, $cardID);
                 }
             }
             else{
@@ -52,12 +51,14 @@ if(isset($_POST['search'])){
                     $cardName = $card['name'];
                     $cardImg = $card['images']['small'];
                     $cardID = $card['id'];
-                    var_dump($cardName, $cardImg, $cardID);
+                    //var_dump($cardName, $cardImg, $cardID);
                 }
             }
         }
     }
 }
+
+
 //var_dump($results);
 //var_dump($cardName, $cardImg);
 //var_dump($search);
@@ -152,10 +153,9 @@ $userID = $_SESSION['user']['id'];
     else{
 
         foreach((array) $results['data'] as $card): ?>
-        <?= "Processing: " . $cardName . "<br>";?>
         <div class="card">
-            <h3 class="cardName"><?= htmlspecialchars($card[$cardName]); ?></h3>
-            <img class="cardImg" src="<?= htmlspecialchars($card[$cardImg]); ?>">
+            <h3 class="cardName"><?php echo htmlspecialchars($cardName); ?></h3>
+            <img class="cardImg" src="<?php echo htmlspecialchars($cardImg); ?>">
         </div>
         <?php endforeach; 
     }

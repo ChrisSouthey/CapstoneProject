@@ -11,6 +11,9 @@ body{
     width:100%;
     height:100%;
 }
+::-webkit-scrollbar {
+    display: none;
+}
 
 /* ---------Logo-------------*/
 .logo{
@@ -250,6 +253,11 @@ svg{
     height:926px;
     background-color:#DDDDDD;
     overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.card{
     display: flex;
     flex-direction: column;
     align-items: center;
