@@ -43,7 +43,7 @@ if(isset($_POST['search'])){
                     $cardName = $card['name'];
                     $cardImg = $card['image_uris']['png'];
                     $cardID = $card['id'];
-                    var_dump($cardName, $cardImg, $cardID);
+                    //var_dump($cardName, $cardImg, $cardID);
                 }
             }
             else{
@@ -151,13 +151,23 @@ $userID = $_SESSION['user']['id'];
         $error = "Results empty";
     } 
     else{
-
-        foreach((array) $results['data'] as $card): ?>
-        <div class="card">
-            <h3 class="cardName"><?php echo htmlspecialchars($cardName); ?></h3>
-            <img class="cardImg" src="<?php echo htmlspecialchars($cardImg); ?>">
-        </div>
-        <?php endforeach; 
+        if($game == "magic"){
+            foreach((array) $results['data'] as $card): ?>
+            <div class="card">
+                <h3 class="cardName"><?php echo htmlspecialchars($card['name']); ?></h3>
+                <img class="cardImg" src="<?php echo htmlspecialchars($card['image_uris']['png']); ?>">
+            </div>
+            <?php endforeach; 
+        }
+        else{
+            foreach((array) $results['data'] as $card): ?>
+            <div class="card">
+                <h3 class="cardName"><?php echo htmlspecialchars($card['name']); ?></h3>
+                <img class="cardImg" src="<?php echo htmlspecialchars($card['images']['small']); ?>">
+            </div>
+            <?php endforeach; 
+        }
+        
     }
 ?>
 
