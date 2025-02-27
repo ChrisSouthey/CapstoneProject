@@ -132,6 +132,12 @@ include '../includes/style grid.php';
     btn.addEventListener('mouseout', function(){
         btn.setAttribute('fill', '#666666');
     });
+
+
+    var log = document.querySelector('.logout');
+    log.addEventListener('click', function(){
+        localStorage.clear();
+    })
 </script>
 
 

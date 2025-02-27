@@ -173,6 +173,9 @@ $userID = $_SESSION['user']['id'];
     if (selectedGame){
 
     }
+    else{
+        gameSel.value = ""
+    }
     gameSel.value = selectedGame;
     function getGame(){
         var game = gameSel.value;
