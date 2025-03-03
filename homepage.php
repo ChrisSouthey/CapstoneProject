@@ -96,7 +96,7 @@ $userID = $_SESSION['user']['id'];
     <div class="left">
     <div class="filter">
     <div class="filtText">
-        <p>My Collection</p>
+        <p>MY COLLECTION</p>
     </div>
     <div style="margin-bottom:10px">
     <form id="filterForm">

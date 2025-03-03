@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
             cardRarity: ["Common", "Uncommon", "Rare", "Mythic"]
         },
         onepiece: {
-            cardType: ["Type A", "Type B", "Type C", "Type D"],
+            cardType: [],
             cardColor: ["Red", "Green", "Blue", "Purple", "Black", "Yellow"],
             cardRarity: ["Common", "Uncommon", "Rare", "Super Rare", "Secret Rare", "Leader", "Don Cards", "Manga Cards"]
         },
@@ -62,7 +62,16 @@ document.addEventListener("DOMContentLoaded", () => {
         } else {
             cardColorContainer.style.display = "block";
             addCheckboxes(cardColorDiv, cardColor, "cardColor");
-        }
+        };
+
+        // Hide Card Type if the game is One Piece for filtering
+        if (selectedGame === "onepiece") {
+            cardTypeDiv.style.display = "none";
+        } else {
+            cardTypeDiv.style.display = "block";
+            addCheckboxes(cardTypeDiv, cardType, "cardType");
+        }        
+        
     }
 
     function addCheckboxes(container, items, name) {

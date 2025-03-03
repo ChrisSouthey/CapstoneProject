@@ -100,7 +100,7 @@ body{
     font-family: "Jersey 20";
     font-size:56px;
     font-size:56px;
-    margin-left:150px;
+    *****margin-left:5px;
 }
 .dropdown-container {
     width: 200px;
