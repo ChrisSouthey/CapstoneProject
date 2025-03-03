@@ -55,6 +55,9 @@ body{
     width:415px;
     height:805px;
     background-color:#DDDDDD; 
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
 }
 .accsettings{
     display:flex;
@@ -63,6 +66,7 @@ body{
     font-family:"Jersey 20";
     font-size:50px;
     align-items:center;
+    justify-content: center;
 }
 .accsettings a{
     color:white;

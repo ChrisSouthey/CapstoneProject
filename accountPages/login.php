@@ -45,7 +45,11 @@ include '../includes/style loginRegister.php';
             <p>Welcome! Please enter login details.</p>
         </div>
     </div>
-    <div class="filter"></div>
+    <div class="filter">
+        <div  class="accsettings">
+            <a href="../index.php">Back</a>
+        </div>
+    </div>
     <div class="mainbox">
         <form method="POST">
             <div class="formcontainer">
