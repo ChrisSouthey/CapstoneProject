@@ -32,7 +32,7 @@ if(isset($_POST["register"])){
     }
 
     if($error == ""){
-       addUser($email, $name, $password);
+        addUser($email, $name, $password);
         header('Location: ../accountPages/login.php');
         exit(); 
     }

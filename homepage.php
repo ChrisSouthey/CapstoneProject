@@ -21,6 +21,7 @@ if(isset($_POST['search'])){
         $error = "Please select a game.";
     }
     else{
+        $error = "";
         $options = array('http' => array(
         'method'  => 'GET',
         'header' => 'x-api-key:' . $apiKey
@@ -28,21 +29,34 @@ if(isset($_POST['search'])){
         $context  = stream_context_create($options);
 
         if($search == ""){
-            $response = file_get_contents("https://apitcg.com/api/" . $game . "/cards?limit=30",false, $context);
-        }
-        else{
-            $response = file_get_contents("https://apitcg.com/api/" . $game . "/cards?name=" . $search . "&limit=30",false, $context);
-        }
-        
-        $results = json_decode($response, true);
-        if($results == ""){
-            $error = "Error";
+            if($game == "magic"){
+                $response = file_get_contents("https://api.magicthegathering.io/v1/cards");
+            }
+            else{
+                $response = file_get_contents("https://apitcg.com/api/" . $game . "/cards?limit=30",false, $context); 
+            }
         }
         else{
             if($game == "magic"){
-                foreach ($results['data'] as $card){
+                $search = strtolower(str_replace("-", '_', $search));
+                $response = file_get_contents("https://api.magicthegathering.io/v1/cards/?name=" . $search);
+            }
+            else{
+                $response = file_get_contents("https://apitcg.com/api/" . $game . "/cards?name=" . $search . "&limit=30",false, $context);
+            }
+        }
+        
+        
+        $results = json_decode($response, true);
+        if(empty($results['data'])){
+            $error = "Error No results found";
+        }
+        else{
+            $error = "";
+            if($game == "magic"){
+                foreach ($results['cards'] as $card){
                     $cardName = $card['name'];
-                    $cardImg = $card['image_uris']['png'];
+                    $imageUrl = isset($card['imageUrl']) && !empty($card['imageUrl']);
                     $cardID = $card['id'];
                     //var_dump($cardName, $cardImg, $cardID);
                 }
@@ -59,7 +73,7 @@ if(isset($_POST['search'])){
     }
 }
 
-
+var_dump($error); 
 //var_dump($results);
 //var_dump($cardName, $cardImg);
 //var_dump($search);
@@ -80,7 +94,9 @@ $userID = $_SESSION['user']['id'];
                 <input type="text" name="search" class="sbar" placeholder="Search for a Card">
             </form>
 
-            <p><?= $error ?></p>
+            <div class="errorbox">
+                <?= $error ;?>
+            </div>
             
             <select id="game" name="game" onchange="getGame()">
                 <option id="opt" value="none" disabled selected>Select a game</option>
@@ -170,10 +186,10 @@ $userID = $_SESSION['user']['id'];
     } 
     else{
         if($game == "magic"){
-            foreach((array) $results['data'] as $card): ?>
+            foreach((array) $results['cards'] as $card): ?>
             <div class="card">
                 <h3 class="cardName"><?php echo htmlspecialchars($card['name']); ?></h3>
-                <img class="cardImg" src="<?php echo htmlspecialchars($card['image_uris']['png']); ?>">
+                <img class="cardImg" src="<?php echo !empty($card['imageUrl']) ? htmlspecialchars($card['imageUrl']) : 'includes/Magic_card_back.png'; ?>">
             </div>
             <?php endforeach; 
         }
@@ -195,7 +211,7 @@ $userID = $_SESSION['user']['id'];
 </div>
 
 <script>
-    //Getting game value from dropdown
+    //Getting game value from dropdown 
     var gameSel = document.getElementById("game");
     var opt = document.getElementById("opt");
     const selectedGame = localStorage.getItem('gameName');
@@ -245,6 +261,12 @@ $userID = $_SESSION['user']['id'];
     window.addEventListener('load', function(){
             gif.style.display = 'none';
         })
+
+    //Error handling stuff
+    var err = document.querySelector('.errorbox');
+    var error = err.innerHTML;
+    //console.log(error);
+    alert(error);
     
     //Filter stuff
     function toggleDropdown(id) {

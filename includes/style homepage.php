@@ -132,6 +132,9 @@ body{
     margin-top:20px;
     margin-top:20px;
 }
+.errorbox{
+    display: none;
+}
 
 
 /* ---------Account Settings-------------*/
