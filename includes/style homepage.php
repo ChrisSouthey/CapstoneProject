@@ -132,6 +132,9 @@ body{
     margin-top:20px;
     margin-top:20px;
 }
+.errorbox{
+    display: none;
+}
 
 
 /* ---------Account Settings-------------*/
@@ -244,6 +247,58 @@ svg{
 }
 .eye:hover{
     cursor:pointer;
+}
+.adding{
+    font-family: "Jersey 20";
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    margin-left: 780px;
+    margin-top: 13px;
+}
+.add{
+    cursor: pointer;
+}
+.adding svg{
+    width:30px;
+    height: 30px;
+    margin-left: 5px;
+}
+#addmenu{
+    background-color:#DDDDDD;
+    width: 370px;
+    height: 234px;
+    margin-left: 550px;
+    position: absolute;
+    border-radius: 40px;
+    display: none;
+    flex-direction: column;
+}
+.groupi{
+    box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.25);
+    font-size:20px;
+    border-radius:10px;
+    border:0;
+    padding:10px;
+    padding-right: 50px;
+    margin-left:35px;
+    margin-top: 50px;
+}
+.subgroup{
+    font-size:30px;
+    color:white;
+    background-color:#bf0000;
+    border:0;
+    padding:10px;
+    margin-left: 35px;
+    margin-top: 15px;
+}
+.loadgif{
+    display: none;
+    z-index: 1;
+    position: absolute;
+    margin-left: 420px;
+    margin-top: 300px;
 }
 
 /* ---------CardInfo-------------*/

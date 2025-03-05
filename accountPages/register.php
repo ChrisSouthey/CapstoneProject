@@ -32,7 +32,7 @@ if(isset($_POST["register"])){
     }
 
     if($error == ""){
-       addUser($email, $name, $password);
+        addUser($email, $name, $password);
         header('Location: ../accountPages/login.php');
         exit(); 
     }
@@ -55,7 +55,11 @@ include '../includes/style loginRegister.php';
             <p>Welcome! Please enter user info.</p>
         </div>
     </div>
-    <div class="filter"></div>
+    <div class="filter">
+        <div  class="accsettings">
+            <a href="../index.php">Back</a>
+        </div>
+    </div>
     <div class="mainbox">
         <form method="POST">
             <div class="formcontainer">
