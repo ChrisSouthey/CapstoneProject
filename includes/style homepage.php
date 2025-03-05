@@ -11,9 +11,7 @@ body{
     width:100%;
     height:100%;
 }
-::-webkit-scrollbar {
-    display: none;
-}
+
 
 /* ---------Logo-------------*/
 .logo{
@@ -88,6 +86,41 @@ body{
 .barsvg{
     display: flex;
 }
+.errorbox{
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    position: absolute;
+    background: #DDDDDD;
+    width: 500px;
+    height: 100px;
+    border-radius:30px;
+    margin-left: 250px;
+}
+.errorbox p{
+    font-family:"Jersey 20";
+    font-size: 27px;
+    margin-top: 5px;
+}
+.errorbox button{
+    width: 50px;
+    height: 50px;
+    border: none;
+    background: #bf0000;
+    font-family:"Jersey 20";
+    font-size: 35px;
+    color:white;
+    margin-left: 10px;
+}
+.errorbox button:hover{
+    cursor: pointer;
+    background: #690505;
+}
+.erbx{
+    display: flex;
+    justify-content: center;
+}
 
 /* ---------Filter-------------*/
 .filter{
@@ -132,9 +165,7 @@ body{
     margin-top:20px;
     margin-top:20px;
 }
-.errorbox{
-    display: none;
-}
+
 
 
 /* ---------Account Settings-------------*/
@@ -162,12 +193,14 @@ body{
 }
 
 
-/* ---------MainBox-------------*/
+/* ------------------------------------------MainBox-------------*/
 .mainbox{
     grid-area:m;
     width:950px;
-    height:780px;
+    height:805px;
     background:#f3f4f5;
+    overflow-y: auto;
+    scrollbar-color:  #bf0000 #f3f4f5;
 }
 .infoBox{
     display:flex;
@@ -255,6 +288,8 @@ svg{
     align-items: center;
     margin-left: 780px;
     margin-top: 13px;
+    z-index: 1;
+    position: absolute;
 }
 .add{
     cursor: pointer;
@@ -273,6 +308,8 @@ svg{
     border-radius: 40px;
     display: none;
     flex-direction: column;
+    z-index: 1;
+    position: absolute;
 }
 .groupi{
     box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.25);
@@ -300,8 +337,17 @@ svg{
     margin-left: 420px;
     margin-top: 300px;
 }
+.groups{
+    font-size: 50px;
+    font-family: "Jersey 20";
+    margin-left: 10px;
+}
+.cards{
+    width: 300px;
+    height: 100px;
+}
 
-/* ---------CardInfo-------------*/
+/* ------------------------------------------CardInfo-------------*/
 .cardinfo{
     grid-area:c;
     width:510px;
@@ -311,6 +357,7 @@ svg{
     display: flex;
     flex-direction: column;
     align-items: center;
+    scrollbar-color:  #bf0000 #DDDDDD;
 }
 .card{
     display: flex;

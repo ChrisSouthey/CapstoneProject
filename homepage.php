@@ -5,7 +5,9 @@ include 'includes/header.php';
 include 'includes/style homepage.php'; 
 include 'model/functions.php';
 
-$game = "";
+$userID = $_SESSION['user']['id'];
+
+$game = filter_input(INPUT_GET,'game');
 $entry = filter_input(INPUT_POST, 'search');
 $search = strtolower(str_replace(" ", '-', $entry));
 $error = "";
@@ -13,12 +15,18 @@ $cardImg = "";
 $cardName = "";
 $cardID = "";
 
+$groupName = "";
+$groups = getGroups($userID);
+$_SESSION['game'] = $game;
+//var_dump($_SESSION['game']);
+
 $apiKey = "2f519d7b5e1fefc31c708df4179a0bebe5ba7f7548ea7b659c10f7073b1fcb5a";
 
+//---------------------------------SEARCH STUFF----------------------------------
 if(isset($_POST['search'])){
     $game = filter_input(INPUT_GET,'game');
     if($game == ""){
-        $error = "Please select a game.";
+        $error = "Error: Please select a game.";
     }
     else{
         $error = "";
@@ -49,7 +57,7 @@ if(isset($_POST['search'])){
         
         $results = json_decode($response, true);
         if(empty($results['data'])){
-            $error = "Error No results found";
+            $error = "Error: No results found";
         }
         else{
             $error = "";
@@ -73,12 +81,21 @@ if(isset($_POST['search'])){
     }
 }
 
-var_dump($error); 
+
+
+if(isset($_POST['subgroup'])){
+    $groupName = filter_input(INPUT_POST, 'group');
+    $error = addGroup($userID, $groupName);
+    $groups = getGroups($userID);
+}
+
+//------------Var dump graveyard-----------
+//var_dump($groups);
+//var_dump($error); 
 //var_dump($results);
 //var_dump($cardName, $cardImg);
 //var_dump($search);
-$userID = $_SESSION['user']['id'];
-
+//var_dump($userID);
 ?>
 <script defer src="filters.js"></script>
 <div id="container">
@@ -95,7 +112,10 @@ $userID = $_SESSION['user']['id'];
             </form>
 
             <div class="errorbox">
-                <?= $error ;?>
+                <div class="erbx">
+                    <p class="errmsg"><?php echo $error ;?></p>
+                    <button class="ok">OK</button>
+                </div>
             </div>
             
             <select id="game" name="game" onchange="getGame()">
@@ -175,6 +195,15 @@ $userID = $_SESSION['user']['id'];
         <div class="loadgif">
             <img src="https://i.gifer.com/ZKZg.gif" jsaction="" class="sFlh5c FyHeAf iPVvYb" style="max-width: 100px; height: 100px; margin: 0px; width: 100px;" alt="Loading GIFs - Get the best gif on GIFER" jsname="kn3ccd">
         </div>
+
+        <div class="groupcon">
+            <?php foreach($groups as $group): ?>
+                <div class="groups">
+                    <?= $group['groupName']; ?><br>
+                    <div class="cards"></div>
+                </div>
+            <?php endforeach ; ?>
+        </div>
     </div>
 
     
@@ -215,16 +244,12 @@ $userID = $_SESSION['user']['id'];
     var gameSel = document.getElementById("game");
     var opt = document.getElementById("opt");
     const selectedGame = localStorage.getItem('gameName');
-    if (selectedGame){
-
-    }
-    else{
+    if (selectedGame === ""){
         gameSel.value = "none"
     }
     gameSel.value = selectedGame;
     function getGame(){
         var game = gameSel.value;
-        console.log(game);
         localStorage.setItem('gameName', gameSel.value);
         window.location = "homepage.php?game=" + game;
     }
@@ -263,10 +288,18 @@ $userID = $_SESSION['user']['id'];
         })
 
     //Error handling stuff
-    var err = document.querySelector('.errorbox');
-    var error = err.innerHTML;
-    //console.log(error);
-    alert(error);
+    var box = document.querySelector('.errorbox');
+    var errmsg = document.querySelector('.errmsg');
+    var btn = document.querySelector('.ok');
+    if(errmsg.innerHTML !== ""){
+        box.style.display = "flex";
+        btn.addEventListener('click', function(){
+            box.style.display = "none";
+        })
+    }
+    else{
+        box.style.display = "none";
+    }
     
     //Filter stuff
     function toggleDropdown(id) {

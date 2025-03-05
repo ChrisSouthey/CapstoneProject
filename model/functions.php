@@ -17,6 +17,8 @@ function login($name, $password) {
     //return($stmt->rowCount() > 0);
 }
 
+//---------------------------------------------Users functions------------------------
+
 function addUser($email, $name, $password){
 
     global $db;
@@ -117,26 +119,66 @@ function getUsers(){
 }
 
 
+//-------------------------------------Groups functions------------------------------
+function addGroup($id, $groupName){
+
+    global $db;
+
+    $result = "";
+
+    $stmt = $db->prepare("SELECT COUNT(*) FROM groupz WHERE id = ? AND groupName = ?");
+    $stmt->execute([$id, $groupName]);
+    $count = $stmt->fetchColumn();
+
+    if ($count > 0) {
+        $error =  "A group with this name already exists.";
+        return $error;
+    }
+    else{
+        $sql = "INSERT INTO groupz SET id = :id, groupName = :n";
+
+        $stmt = $db->prepare($sql);
+
+        $binds = array(
+            ":id" => $id,
+            ":n" => $groupName,
+        );
+
+        if($stmt->execute($binds) && $stmt->rowCount() > 0){
+        }
+
+        return $result;
+    }
+}
+
+function getGroups($id){
+    global $db;
+
+    $result = [];
+
+    $stmt = $db->prepare("SELECT * FROM groupz WHERE id = :id ORDER BY groupID");
+
+    $binds = array(
+        ':id'=> $id
+    );
+
+    if ( $stmt->execute($binds) && $stmt->rowCount() > 0){
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    return $result;
+}
 
 
 
 
-/*
-CREATE TABLE `users` (
-    `id` int unsigned NOT NULL AUTO_INCREMENT,
-    `email` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
-    `name` varchar(30) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
-    `password` varchar(30) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
-    PRIMARY KEY (`id`)
-  ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
-  CREATE TABLE `groupz` (
-    `groupID` int unsigned NOT NULL AUTO_INCREMENT,
-    `id` int unsigned NOT NULL,
-    `groupName` varchar(30) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
-    PRIMARY KEY (`groupID`),
-    UNIQUE KEY `unique assignment` (`id`,`groupName`),
-    KEY `fk_userID` (`id`),
-    CONSTRAINT `fk_userID` FOREIGN KEY (`id`) REFERENCES `users` (`id`)
-  ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci; */
+
+
+
+
+
+
+
+
