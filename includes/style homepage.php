@@ -347,6 +347,15 @@ svg{
     height: 100px;
 }
 
+.groups a{
+    color:black;
+    text-decoration: none;
+}
+.groups a:hover{
+    text-decoration: underline;
+    color: #bf0000;
+}
+
 /* ------------------------------------------CardInfo-------------*/
 .cardinfo{
     grid-area:c;
@@ -369,11 +378,23 @@ svg{
     font-size:30px;
     text-align: center;
     margin-bottom: 10px;
+    margin-top: 40px;
 }
 .cardImg{
     height: 500px;
     width: 400px;
-    margin-bottom: 40px;
+    margin-bottom: 10px;
+}
+.cardlink{
+    font-family: "Jersey 20";
+    font-size:30px;
+    text-align: center;
+    color:black;
+    text-decoration: none;
+}
+.cardlink:hover{
+    color:#bf0000;
+    text-decoration: underline;
 }
 
 /* ---------Container/Body-------------*/

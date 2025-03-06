@@ -1,3 +1,4 @@
+
 <?php 
 session_start();
 
@@ -11,9 +12,15 @@ $game = filter_input(INPUT_GET,'game');
 $entry = filter_input(INPUT_POST, 'search');
 $search = strtolower(str_replace(" ", '-', $entry));
 $error = "";
+
 $cardImg = "";
 $cardName = "";
 $cardID = "";
+$cardType = "";
+$cardRarity = "";
+$cardColor = "";
+$selCard = filter_input(INPUT_GET, 'card');
+
 
 $groupName = "";
 $groups = getGroups($userID);
@@ -65,7 +72,7 @@ if(isset($_POST['search'])){
                 foreach ($results['cards'] as $card){
                     $cardName = $card['name'];
                     $imageUrl = isset($card['imageUrl']) && !empty($card['imageUrl']);
-                    $cardID = $card['id'];
+                    $cardID = $card['multiverseid'];
                     //var_dump($cardName, $cardImg, $cardID);
                 }
             }
@@ -90,6 +97,7 @@ if(isset($_POST['subgroup'])){
 }
 
 //------------Var dump graveyard-----------
+var_dump($selCard);
 //var_dump($groups);
 //var_dump($error); 
 //var_dump($results);
@@ -199,7 +207,7 @@ if(isset($_POST['subgroup'])){
         <div class="groupcon">
             <?php foreach($groups as $group): ?>
                 <div class="groups">
-                    <?= $group['groupName']; ?><br>
+                    <a class="grouplink" href="homepage.php?game=<?=$game;?>&group=<?= $group['groupID']; ?>"  ><?= $group['groupName']; ?></a><br>
                     <div class="cards"></div>
                 </div>
             <?php endforeach ; ?>
@@ -219,6 +227,7 @@ if(isset($_POST['subgroup'])){
             <div class="card">
                 <h3 class="cardName"><?php echo htmlspecialchars($card['name']); ?></h3>
                 <img class="cardImg" src="<?php echo !empty($card['imageUrl']) ? htmlspecialchars($card['imageUrl']) : 'includes/Magic_card_back.png'; ?>">
+                <a class="cardlink" href="homepage.php?game=<?=$game;?>&group=<?= $group['groupID'];?>&card=<?=$cardID;?>">Add Card</a>
             </div>
             <?php endforeach; 
         }
@@ -227,6 +236,7 @@ if(isset($_POST['subgroup'])){
             <div class="card">
                 <h3 class="cardName"><?php echo htmlspecialchars($card['name']); ?></h3>
                 <img class="cardImg" src="<?php echo htmlspecialchars($card['images']['small']); ?>">
+                <a class="cardlink" href="homepage.php?game=<?=$game;?>&group=<?= $group['groupID'];?>&card=<?=$cardID;?>">Add Card</a>
             </div>
             <?php endforeach; 
         }

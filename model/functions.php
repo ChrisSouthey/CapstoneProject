@@ -172,6 +172,35 @@ function getGroups($id){
 
 
 
+//-------------------------------------------------Cards Functions---------------------------------------
+function addCard($groupID, $cardName, $cardType, $cardColor, $cardRarity, $cardImg){
+
+    global $db;
+
+    $result = "";
+
+    $sql = "INSERT INTO cards SET groupID = :id, cardName = :n, cardType = :t, cardColor = :c, cardRarity = :r, cardImg = :i";
+
+    $stmt = $db->prepare($sql);
+
+    $binds = array(
+        ":id" => $groupID,
+        ":n" => $cardName,
+        ":t" => $cardType,
+        ":c" => $cardColor,
+        ":r" => $cardRarity,
+        ":i" => $cardImg,
+    );
+
+    if($stmt->execute($binds) && $stmt->rowCount() > 0){
+        $result = "Data Added";
+    }
+
+    return $result;
+}
+
+
+
 
 
 
