@@ -83,7 +83,7 @@ document.addEventListener("DOMContentLoaded", () => {
             checkbox.name = name;
             checkbox.value = item;
             label.appendChild(checkbox);
-            label.append(` ${item}`);
+            label.append(item);
             container.appendChild(label);
             container.appendChild(document.createElement("br"));
         });
@@ -118,6 +118,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     function getCheckedValues(name) {
-        return [...document.querySelectorAll(`input[name=${name}]:checked`)].map(el => el.value);
+        return [...document.querySelectorAll(`input[name="${name}"]:checked`)].map(el => el.value);
     }
+    
 });
