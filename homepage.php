@@ -181,12 +181,10 @@ if(isset($_POST['subgroup'])){
     </div>
 
     <!-- Main Content Area -->
-    <div class="mainbox">
-       
+    <div class="mainbox"> <!--AHHHHHHHHHHHHHHHHHHHHHHhhhhhhhhhhhhhhhhhhhhhhhhhh-->
         <div class="adding">
-            <p class="add">Add Collection</p>
-            <svg class="plus" xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 44 44" fill="none">
-                <path d="M19.8333 32.8334H24.1666V24.1667H32.8332V19.8334H24.1666V11.1667H19.8333V19.8334H11.1666V24.1667H19.8333V32.8334ZM21.9999 43.6667C19.0027 43.6667 16.186 43.098 13.5499 41.9605C10.9138 40.823 8.62075 39.2792 6.67075 37.3292C4.72075 35.3792 3.177 33.0862 2.0395 30.45C0.902002 27.8139 0.333252 24.9973 0.333252 22C0.333252 19.0028 0.902002 16.1862 2.0395 13.55C3.177 10.9139 4.72075 8.62087 6.67075 6.67087C8.62075 4.72087 10.9138 3.17712 13.5499 2.03962C16.186 0.902124 19.0027 0.333374 21.9999 0.333374C24.9971 0.333374 27.8138 0.902124 30.4499 2.03962C33.086 3.17712 35.3791 4.72087 37.3291 6.67087C39.2791 8.62087 40.8228 10.9139 41.9603 13.55C43.0978 16.1862 43.6666 19.0028 43.6666 22C43.6666 24.9973 43.0978 27.8139 41.9603 30.45C40.8228 33.0862 39.2791 35.3792 37.3291 37.3292C35.3791 39.2792 33.086 40.823 30.4499 41.9605C27.8138 43.098 24.9971 43.6667 21.9999 43.6667Z" fill="#666666"/>
+            <p class="add">Add Collection</p><svg class="plus" xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 44 44" fill="none">
+            <path d="M19.8333 32.8334H24.1666V24.1667H32.8332V19.8334H24.1666V11.1667H19.8333V19.8334H11.1666V24.1667H19.8333V32.8334ZM21.9999 43.6667C19.0027 43.6667 16.186 43.098 13.5499 41.9605C10.9138 40.823 8.62075 39.2792 6.67075 37.3292C4.72075 35.3792 3.177 33.0862 2.0395 30.45C0.902002 27.8139 0.333252 24.9973 0.333252 22C0.333252 19.0028 0.902002 16.1862 2.0395 13.55C3.177 10.9139 4.72075 8.62087 6.67075 6.67087C8.62075 4.72087 10.9138 3.17712 13.5499 2.03962C16.186 0.902124 19.0027 0.333374 21.9999 0.333374C24.9971 0.333374 27.8138 0.902124 30.4499 2.03962C33.086 3.17712 35.3791 4.72087 37.3291 6.67087C39.2791 8.62087 40.8228 10.9139 41.9603 13.55C43.0978 16.1862 43.6666 19.0028 43.6666 22C43.6666 24.9973 43.0978 27.8139 41.9603 30.45C40.8228 33.0862 39.2791 35.3792 37.3291 37.3292C35.3791 39.2792 33.086 40.823 30.4499 41.9605C27.8138 43.098 24.9971 43.6667 21.9999 43.6667ZM21.9999 39.3334C26.8388 39.3334 30.9374 37.6542 34.2957 34.2959C37.6541 30.9375 39.3332 26.8389 39.3332 22C39.3332 17.1611 37.6541 13.0625 34.2957 9.70421C30.9374 6.34587 26.8388 4.66671 21.9999 4.66671C17.161 4.66671 13.0624 6.34587 9.70408 9.70421C6.34575 13.0625 4.66658 17.1611 4.66658 22C4.66658 26.8389 6.34575 30.9375 9.70408 34.2959C13.0624 37.6542 17.161 39.3334 21.9999 39.3334Z" fill="#666666"/>
             </svg>
         </div>
         <div id="addmenu" class="hidden">
@@ -195,63 +193,19 @@ if(isset($_POST['subgroup'])){
                 <input type="submit" name="subgroup" class="subgroup">
             </form>
         </div>
-        
-        <!-- Loading Animation -->
-        <div class="loadgif" style="display:none;">
-            <img src="https://i.gifer.com/ZKZg.gif" style="max-width: 100px; height: 100px; margin: 0px;" alt="Loading...">
+        <div class="loadgif">
+            <img src="https://i.gifer.com/ZKZg.gif" jsaction="" class="sFlh5c FyHeAf iPVvYb" style="max-width: 100px; height: 100px; margin: 0px; width: 100px;" alt="Loading GIFs - Get the best gif on GIFER" jsname="kn3ccd">
         </div>
-        
-        <!-- Deck / Collection Previews Section -->
-        <div id="deck-results">
 
-            <div id="deck-mtg" class="deck">
-                <div class="deck-header" style="display:flex; align-items:center; margin-top:20px;margin-bottom:5px;">
-                    <span class="toggle-arrow" onclick="toggleDeckPreview('mtg-preview')" style="cursor:pointer;">&#9654;</span>
-                    
-                    <span class="deck-name" style="margin-left:5px; text-align:left; flex:1;">Magic The Gathering Deck</span>
+        <div class="groupcon">
+            <?php foreach($groups as $group): ?>
+                <div class="groups">
+                    <a href="homepage.php?game=<?=$game;?>&group=<?= $group['groupID'];?>"><?= $group['groupName']; ?><br></a>
+                    <div class="cards"></div>
                 </div>
-                
-                <div id="mtg-preview" class="deck-preview hidden">
-                    <div class="card-preview">Card 1</div>
-                    <div class="card-preview">Card 2</div>
-                    <div class="card-preview">Card 3</div>
-                    <div class="card-preview">Card 4</div>
-                    <div class="card-preview">Card 5</div>
-                </div>
-            </div>
-
-            
-            <div id="deck-pokemon" class="deck">
-                <div class="deck-header" style="display:flex; align-items:center; margin-top:20px;margin-bottom:5px;">
-                    <span class="toggle-arrow" onclick="toggleDeckPreview('pokemon-preview')" style="cursor:pointer;">&#9654;</span>
-                    <span class="deck-name" style="margin-left:5px; text-align:left; flex:1;">Pokemon Deck</span>
-                </div>
-                <div id="pokemon-preview" class="deck-preview hidden">
-                    <div class="card-preview">Card 1</div>
-                    <div class="card-preview">Card 2</div>
-                    <div class="card-preview">Card 3</div>
-                    <div class="card-preview">Card 4</div>
-                    <div class="card-preview">Card 5</div>
-                </div>
-            </div>
-
-            
-            <div id="deck-onepiece" class="deck">
-                <div class="deck-header" style="display:flex; align-items:center; margin-top:20px;margin-bottom:5px;">
-                    <span class="toggle-arrow" onclick="toggleDeckPreview('onepiece-preview')" style="cursor:pointer;">&#9654;</span>
-                    <span class="deck-name" style="margin-left:5px; text-align:left; flex:1;">One Piece Deck</span>
-                </div>
-                <div id="onepiece-preview" class="deck-preview hidden">
-                    <div class="card-preview">Card 1</div>
-                    <div class="card-preview">Card 2</div>
-                    <div class="card-preview">Card 3</div>
-                    <div class="card-preview">Card 4</div>
-                    <div class="card-preview">Card 5</div>
-                </div>
-            </div>
+            <?php endforeach ; ?>
         </div>
     </div>
-
     <!-- Card Info Section (for API-driven search results) -->
     <div class="cardinfo">
         <?php 
