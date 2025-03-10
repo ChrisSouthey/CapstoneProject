@@ -121,6 +121,9 @@ body{
     display: flex;
     justify-content: center;
 }
+.left{
+    max-width: 410px;
+}
 
 /* ---------Filter-------------*/
 .filter{
@@ -355,6 +358,58 @@ svg{
     text-decoration: underline;
     color: #bf0000;
 }
+.logo {
+max-width: 415px;
+}
+
+/* Style for deck names */
+.deck-name {
+  font-family: Arial, sans-serif; 
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Style for the deck header container */
+.deck-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+/* Toggle arrow style */
+.toggle-arrow {
+  font-size: 20px;
+}
+
+
+.deck-preview {
+  margin-left: 40px; 
+  margin-bottom: 10px;
+  /* When hidden, use hidden class below */
+}
+
+.card-preview {
+  width: 50px;         
+  height: 70px;        
+  background-color: #ccc; 
+  display: inline-block;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  border: 1px solid #999; 
+}
+
+/* Hide element */
+.hidden {
+  display: none;
+}
+
+.filter label {
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  color: #333;
+}
+
 
 /* ------------------------------------------CardInfo-------------*/
 .cardinfo{
