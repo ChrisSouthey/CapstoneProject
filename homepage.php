@@ -69,8 +69,9 @@ if(isset($_POST['search'])){
             if($game == "magic"){
                 foreach ($results['cards'] as $card){
                     $cardName = $card['name'];
+                    $cardImg = $card['imageUrl'];
                     $cardID = $card['multiverseid'];
-                    
+                    $cardRarity = $card['rarity'];
                 }
             }
             else{
@@ -78,6 +79,7 @@ if(isset($_POST['search'])){
                     $cardName = $card['name'];
                     $cardImg = $card['images']['small'];
                     $cardID = $card['id'];
+                    $cardRarity = $card['rarity'];
                 }
             }
         }
@@ -89,6 +91,14 @@ if(isset($_POST['subgroup'])){
     $error = addGroup($userID, $groupName);
     $groups = getGroups($userID);
 }
+
+//------------Var dump graveyard/ Please dont fucking delete this-----------
+//var_dump($cardType);
+ //var_dump($groups);
+ //var_dump($error); 
+ //var_dump($results);
+ //var_dump($cardName, $cardImg);
+ //var_dump($search);
 ?>
 
 
@@ -103,14 +113,14 @@ if(isset($_POST['subgroup'])){
     <!-- Search Section -->
     <div class="search">
         <div class="bar">
-            <!-- Search Icon -->
-            <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="#666666">
-                <path d="M796-121 533-384q-30 26-69.96 40.5Q423.08-329 378-329q-108.16 0-183.08-75Q120-479 120-585t75-181q75-75 181.5-75t181 75Q632-691 632-584.85 632-542 618-502q-14 40-42 75l264 262-44 44ZM377-389q81.25 0 138.13-57.5Q572-504 572-585t-56.87-138.5Q458.25-781 377-781q-82.08 0-139.54 57.5Q180-666 180-585t57.46 138.5Q294.92-389 377-389Z"/>
-            </svg>
-            <!-- Search Form -->
-            <form method="POST">
-                <input type="text" name="search" class="sbar" placeholder="Search for a Card">
-            </form>
+            <div class="barflex">
+                
+                <!-- Search Form -->
+                <form method="POST">
+                    <input type="text" name="search" class="sbar" placeholder="Search for a Card">
+                </form>
+            </div>
+            
             <!-- Error Display Box -->
             <div class="errorbox">
                 <div class="erbx">
@@ -140,9 +150,8 @@ if(isset($_POST['subgroup'])){
                 <p>My Collection</p>
             </div>
             <div style="margin-bottom:10px">
-               
                 <form id="filterForm">
-                   
+                    
                     <label for="gameName">Game Name:</label>
                     <select id="gameName" name="gameName">
                         <option value="">Select a Game</option>
@@ -165,7 +174,7 @@ if(isset($_POST['subgroup'])){
                         <h3>Card Rarity</h3>
                         <div id="cardRarity" style="margin-bottom:20px"></div>
                     </div>
-                   
+                    
                     <button type="submit">Filter Cards</button>
                 </form>
             </div>
@@ -218,6 +227,7 @@ if(isset($_POST['subgroup'])){
                         <h3 class="cardName"><?php echo htmlspecialchars($card['name']); ?></h3>
                         <img class="cardImg" src="<?php echo !empty($card['imageUrl']) ? htmlspecialchars($card['imageUrl']) : 'includes/Magic_card_back.png'; ?>">
                         <a class="cardlink" href="homepage.php?game=<?=$game;?>&group=<?= $group['groupID'];?>&card=<?=$cardID;?>">Add Card</a>
+                        <?= var_dump($card['rarity']); ?>
                     </div>
                 <?php endforeach; 
             } else {
@@ -226,6 +236,7 @@ if(isset($_POST['subgroup'])){
                         <h3 class="cardName"><?php echo htmlspecialchars($card['name']); ?></h3>
                         <img class="cardImg" src="<?php echo htmlspecialchars($card['images']['small']); ?>">
                         <a class="cardlink" href="homepage.php?game=<?=$game;?>&group=<?= $group['groupID'];?>&card=<?=$cardID;?>">Add Card</a>
+                        <?= var_dump($card['rarity']); ?>
                     </div>
                 <?php endforeach; 
             }

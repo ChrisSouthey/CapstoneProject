@@ -35,10 +35,11 @@ body{
 /* ---------SearchBar-------------*/
 .search{
     grid-area:s;
-    width:100%;
+    width:518px;
     height:121px;
     background-color:#242024;
-    border-radius: 0px 0px 30px 30px;
+    display: flex;
+    justify-content: center;
 }
 .headText{
     font-family:"Jersey 20";
@@ -48,22 +49,22 @@ body{
     justify-content:center;
     margin-top:20px;
 }
+.barflex{
+    display: flex;
+}
 .bar{
     display: flex;
     align-items: center;
-    margin-top: 25px;
+    margin: 10px 0 10px 0;
 }
 .bar input{
     box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.25);
-    font-size:40px;
+    font-size:23px;
     border-radius:10px;
     border:0;
     padding:10px;
-    padding-right: 100px;
-    margin-right:30px;
-}
-.bar svg{
-    margin-left: 15px;
+    padding-left: 10px;
+    margin-right: 10px;
 }
 .bar select{
     box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.25);
@@ -71,7 +72,10 @@ body{
     border-radius:10px;
     border:0;
     padding:10px;
+    padding-right: 10px;
+    font-family: "Jersey 20";
 }
+
 .searcherr{
     display: flex;
     flex-direction: column;
@@ -93,15 +97,18 @@ body{
     z-index: 1;
     position: absolute;
     background: #DDDDDD;
-    width: 500px;
-    height: 100px;
+    width: 300px;
+    height: 200px;
     border-radius:30px;
-    margin-left: 250px;
+    border: solid black 3px;
+    margin-left: 100px;
+    margin-top: 180px;
 }
 .errorbox p{
     font-family:"Jersey 20";
-    font-size: 27px;
-    margin-top: 5px;
+    font-size: 30px;
+    width: 200px;
+    height: 50px;
 }
 .errorbox button{
     width: 50px;
@@ -200,7 +207,7 @@ body{
 .mainbox{
     grid-area:m;
     width:950px;
-    height:805px;
+    height:925px;
     background:#f3f4f5;
     overflow-y: auto;
     scrollbar-color:  #bf0000 #f3f4f5;
@@ -363,8 +370,8 @@ svg{
 /* ------------------------------------------CardInfo-------------*/
 .cardinfo{
     grid-area:c;
-    width:510px;
-    height:926px;
+    width:518px;
+    height:805px;
     background-color:#DDDDDD;
     overflow-y: auto;
     display: flex;
@@ -405,7 +412,7 @@ svg{
 #container{
     display:grid;
     grid-template-areas:
-    'l l s s s c c c'
+    'l l m m m s s s'
     'f f m m m c c c'
     'f f m m m c c c'
     'f f m m m c c c'
