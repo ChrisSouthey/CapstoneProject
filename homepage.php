@@ -22,6 +22,7 @@ $selCard = filter_input(INPUT_GET, 'card');
 
 // Get groups (collections) for the user from the database
 $groupName = "";
+$img = "";
 $groups = getGroups($userID);
 $_SESSION['game'] = $game;
 
@@ -71,7 +72,6 @@ if(isset($_POST['search'])){
                     $cardName = $card['name'];
                     $cardImg = $card['imageUrl'];
                     $cardID = $card['multiverseid'];
-                    $cardRarity = $card['rarity'];
                 }
             }
             else{
@@ -79,7 +79,6 @@ if(isset($_POST['search'])){
                     $cardName = $card['name'];
                     $cardImg = $card['images']['small'];
                     $cardID = $card['id'];
-                    $cardRarity = $card['rarity'];
                 }
             }
         }
@@ -92,13 +91,24 @@ if(isset($_POST['subgroup'])){
     $groups = getGroups($userID);
 }
 
+if (isset($_GET['group']) && isset($_GET['img'])) {
+    $groupName = filter_input(INPUT_GET, 'group');
+    $img = filter_input(INPUT_GET, 'img', FILTER_SANITIZE_URL);
+
+    addCard($groupName, $img);
+    echo "WOOHOO";
+} else {
+    $error = "Please select a group.";
+}
+
 //------------Var dump graveyard/ Please dont fucking delete this-----------
-//var_dump($cardType);
- //var_dump($groups);
- //var_dump($error); 
- //var_dump($results);
- //var_dump($cardName, $cardImg);
- //var_dump($search);
+//var_dump($cardID);
+//var_dump($groups);
+//var_dump($group);
+//var_dump($error); 
+//var_dump($results);
+//var_dump($cardName, $cardImg);
+//var_dump($search);
 ?>
 
 
@@ -225,9 +235,8 @@ if(isset($_POST['subgroup'])){
                 foreach((array) $results['cards'] as $card): ?>
                     <div class="card">
                         <h3 class="cardName"><?php echo htmlspecialchars($card['name']); ?></h3>
-                        <img class="cardImg" src="<?php echo !empty($card['imageUrl']) ? htmlspecialchars($card['imageUrl']) : 'includes/Magic_card_back.png'; ?>">
-                        <a class="cardlink" href="homepage.php?game=<?=$game;?>&group=<?= $group['groupID'];?>&card=<?=$cardID;?>">Add Card</a>
-                        <?= var_dump($card['rarity']); ?>
+                        <a class="cardlink" href="homepage.php?game=<?=$game;?>&group=<?= $group['groupID'];?>&img=<?=$card['imageUrl'];?>">Add Card</a>
+                        
                     </div>
                 <?php endforeach; 
             } else {
@@ -235,8 +244,7 @@ if(isset($_POST['subgroup'])){
                     <div class="card">
                         <h3 class="cardName"><?php echo htmlspecialchars($card['name']); ?></h3>
                         <img class="cardImg" src="<?php echo htmlspecialchars($card['images']['small']); ?>">
-                        <a class="cardlink" href="homepage.php?game=<?=$game;?>&group=<?= $group['groupID'];?>&card=<?=$cardID;?>">Add Card</a>
-                        <?= var_dump($card['rarity']); ?>
+                        <a class="cardlink" href="homepage.php?game=<?=$game;?>&group=<?= $group['groupID'];?>&img=<?=$card['images']['small'];?>" onclick="addCard(<?= $group['groupID'];?>, <?=$card['images']['small'];?>)">Add Card</a>
                     </div>
                 <?php endforeach; 
             }

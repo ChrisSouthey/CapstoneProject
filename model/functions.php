@@ -173,7 +173,7 @@ function getGroups($id){
 
 
 //-------------------------------------------------Cards Functions---------------------------------------
-function addCard($groupID, $cardName, $cardType, $cardColor, $cardRarity, $cardImg){
+function addCard2($groupID, $cardName, $cardType, $cardColor, $cardRarity, $cardImg){
 
     global $db;
 
@@ -194,6 +194,46 @@ function addCard($groupID, $cardName, $cardType, $cardColor, $cardRarity, $cardI
 
     if($stmt->execute($binds) && $stmt->rowCount() > 0){
         $result = "Data Added";
+    }
+
+    return $result;
+}
+
+function addCard($groupID, $cardImg){
+
+    global $db;
+
+    $result = "";
+
+    $sql = "INSERT INTO cards SET groupID = :id, cardImg = :i";
+
+    $stmt = $db->prepare($sql);
+
+    $binds = array(
+        ":id" => $groupID,
+        ":i" => $cardImg
+    );
+
+    if($stmt->execute($binds) && $stmt->rowCount() > 0){
+        $result = "Data Added";
+    }
+
+    return $result;
+}
+
+function getCards($id){
+    global $db;
+
+    $result = [];
+
+    $stmt = $db->prepare("SELECT * FROM groupz WHERE id = :id ORDER BY groupID");
+
+    $binds = array(
+        ':id'=> $id
+    );
+
+    if ( $stmt->execute($binds) && $stmt->rowCount() > 0){
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
     return $result;
