@@ -89,11 +89,26 @@ if(isset($_POST['subgroup'])){
 }
 
 if (isset($_GET['group']) && isset($_GET['img'])) {
-    $groupName = filter_input(INPUT_GET, 'group');
-    $img = filter_input(INPUT_GET, 'img', FILTER_SANITIZE_URL);
-    addCard($groupName, $img);
-    header("Location: homepage.php?game=$game&group=$groupName");
-    exit();
+    if($_GET['group'] == ""){
+        $error = "Please select a group.";
+    }
+    else{
+        if ($game == "magic"){
+            $groupName = filter_input(INPUT_GET, 'group');
+            $img = filter_input(INPUT_GET, 'img', FILTER_SANITIZE_URL);
+            $img .= "&type=card";
+            addCard($groupName, $img);
+            header("Location: homepage.php?game=$game&group=$groupName");
+            exit(); 
+        }
+        else{
+            $groupName = filter_input(INPUT_GET, 'group');
+            $img = filter_input(INPUT_GET, 'img', FILTER_SANITIZE_URL);
+            addCard($groupName, $img);
+            header("Location: homepage.php?game=$game&group=$groupName");
+            exit(); 
+        }
+    }
 }
 
 
@@ -227,7 +242,7 @@ include 'includes/style homepage.php';
                 <?php 
                 $cards = getCards($group['groupID']); 
                     foreach ($cards as $card): ?>
-                        <img class="cardSmall" src="<?= isset($card['cardImg']) && !empty($card['cardImg']) ? htmlspecialchars($card['cardImg']) : 'includes/Magic_card_back.png'; ?>" onerror="this.onerror=null; this.src='includes/Magic_card_back.png';">
+                        <img class="cardSmall" src="<?= isset($card['cardImg']) && !empty($card['cardImg']) ? htmlspecialchars($card['cardImg']) : 'includes/Magic_card_back.png'; ?>">
                     <?php endforeach; ?>
             </div>
         </div>
@@ -246,8 +261,7 @@ include 'includes/style homepage.php';
                     <div class="card">
                         <h3 class="cardName"><?php echo htmlspecialchars($cardz['name']); ?></h3>
                         <img class="cardImg" src="<?php echo isset($cardz['imageUrl']) ? htmlspecialchars($cardz['imageUrl']) : 'includes/Magic_card_back.png'; ?>">
-                        <a class="cardlink" href="homepage.php?game=<?=$game;?>&group=<?= $group['groupID'];?>&img=<?php echo !empty($cardz['imageUrl']) ? htmlspecialchars($cardz['imageUrl']) : 'includes/Magic_card_back.png'; ?>">Add Card</a>
-                        
+                        <a class="cardlink" href="homepage.php?game=<?=$game;?>&group=<?= $_SESSION['group']?>&img=<?php echo !empty($cardz['imageUrl']) ? htmlspecialchars($cardz['imageUrl']) : 'https://i.imgur.com/LdOBU1I.jpeg'; ?>">Add Card</a>
                     </div>
                 <?php endforeach; 
             } else {

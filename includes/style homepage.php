@@ -353,7 +353,7 @@ svg{
     margin-left: 10px;
 }
 .cards{
-    width: 800px;
+    width: 810px;
     height: 250px;
     display: flex;
     flex-wrap: wrap;
@@ -369,8 +369,8 @@ svg{
     color: #bf0000;
 }
 .cardSmall{
-    width: 150px;
-    height: 200px;
+    width: 190px;
+    height: 240px;
     margin-right: 5px;
     margin-bottom: 5px;
     border: solid black 1px;
