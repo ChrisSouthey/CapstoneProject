@@ -353,8 +353,11 @@ svg{
     margin-left: 10px;
 }
 .cards{
-    width: 300px;
-    height: 100px;
+    width: 800px;
+    height: 250px;
+    display: flex;
+    flex-wrap: wrap;
+    overflow-y: auto;
 }
 
 .groups a{
@@ -364,6 +367,14 @@ svg{
 .groups a:hover{
     text-decoration: underline;
     color: #bf0000;
+}
+.cardSmall{
+    width: 150px;
+    height: 200px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    border: solid black 1px;
+    border-radius: 10px;
 }
 
 

@@ -2,7 +2,6 @@
 // Start the session and include necessary files
 session_start();
 include 'includes/header.php';
-include 'includes/style homepage.php';
 include 'model/functions.php';
 
 // Get session variables and input parameters for search functionality
@@ -15,13 +14,11 @@ $error = "";
 $cardImg = "";
 $cardName = "";
 $cardID = "";
-$cardType = "";
-$cardRarity = "";
-$cardColor = "";
-$selCard = filter_input(INPUT_GET, 'card');
 
 // Get groups (collections) for the user from the database
-$groupName = "";
+$groupName = filter_input(INPUT_GET, 'group');
+$_SESSION['group'] = $groupName;
+$cards = getCards($groupName);
 $img = "";
 $groups = getGroups($userID);
 $_SESSION['game'] = $game;
@@ -62,23 +59,23 @@ if(isset($_POST['search'])){
         }
         
         $results = json_decode($response, true);
-        if(empty($results['data'])){
+
+        if (!isset($results) || (!isset($results['data']) && !isset($results['cards'])) || empty($results['data']) && empty($results['cards'])) {
             $error = "Error: No results found";
-        }
+        } 
         else{
             $error = "";
-            if($game == "magic"){
-                foreach ($results['cards'] as $card){
+            if ($game == "magic" && isset($results['cards'])) {
+                foreach ($results['cards'] as $card) {
                     $cardName = $card['name'];
-                    $cardImg = $card['imageUrl'];
-                    $cardID = $card['multiverseid'];
+                    $cardImg = $card['imageUrl'] ?? '';
+                    $cardID = $card['multiverseid'] ?? '';
                 }
-            }
-            else{
+            } elseif (isset($results['data'])) {
                 foreach ($results['data'] as $card) {
                     $cardName = $card['name'];
-                    $cardImg = $card['images']['small'];
-                    $cardID = $card['id'];
+                    $cardImg = $card['images']['small'] ?? '';
+                    $cardID = $card['id'] ?? '';
                 }
             }
         }
@@ -94,21 +91,23 @@ if(isset($_POST['subgroup'])){
 if (isset($_GET['group']) && isset($_GET['img'])) {
     $groupName = filter_input(INPUT_GET, 'group');
     $img = filter_input(INPUT_GET, 'img', FILTER_SANITIZE_URL);
-
     addCard($groupName, $img);
-    echo "WOOHOO";
-} else {
-    $error = "Please select a group.";
+    header("Location: homepage.php?game=$game&group=$groupName");
+    exit();
 }
 
+
 //------------Var dump graveyard/ Please dont fucking delete this-----------
+//var_dump($cards);
 //var_dump($cardID);
 //var_dump($groups);
-//var_dump($group);
+//var_dump($_SESSION['group']);
 //var_dump($error); 
 //var_dump($results);
 //var_dump($cardName, $cardImg);
 //var_dump($search);
+
+include 'includes/style homepage.php';
 ?>
 
 
@@ -217,13 +216,24 @@ if (isset($_GET['group']) && isset($_GET['img'])) {
         </div>
 
         <div class="groupcon">
-            <?php foreach($groups as $group): ?>
-                <div class="groups">
-                    <a href="homepage.php?game=<?=$game;?>&group=<?= $group['groupID'];?>"><?= $group['groupName']; ?><br></a>
-                    <div class="cards"></div>
-                </div>
-            <?php endforeach ; ?>
+        <?php foreach ($groups as $group): ?>
+        <div class="groups">
+            <a href="homepage.php?game=<?= $game; ?>&group=<?= $group['groupID']; ?>">
+                <?= htmlspecialchars($group['groupName']); ?>
+            </a>
+            <br/>
+
+            <div class="cards">
+                <?php 
+                $cards = getCards($group['groupID']); 
+                    foreach ($cards as $card): ?>
+                        <img class="cardSmall" src="<?= isset($card['cardImg']) && !empty($card['cardImg']) ? htmlspecialchars($card['cardImg']) : 'includes/Magic_card_back.png'; ?>" onerror="this.onerror=null; this.src='includes/Magic_card_back.png';">
+                    <?php endforeach; ?>
+            </div>
         </div>
+    <?php endforeach; ?>
+</div>
+
     </div>
     <!-- Card Info Section (for API-driven search results) -->
     <div class="cardinfo">
@@ -232,19 +242,20 @@ if (isset($_GET['group']) && isset($_GET['img'])) {
             $error = "Results empty";
         } else {
             if($game == "magic"){
-                foreach((array) $results['cards'] as $card): ?>
+                foreach((array) $results['cards'] as $cardz): ?>
                     <div class="card">
-                        <h3 class="cardName"><?php echo htmlspecialchars($card['name']); ?></h3>
-                        <a class="cardlink" href="homepage.php?game=<?=$game;?>&group=<?= $group['groupID'];?>&img=<?=$card['imageUrl'];?>">Add Card</a>
+                        <h3 class="cardName"><?php echo htmlspecialchars($cardz['name']); ?></h3>
+                        <img class="cardImg" src="<?php echo isset($cardz['imageUrl']) ? htmlspecialchars($cardz['imageUrl']) : 'includes/Magic_card_back.png'; ?>">
+                        <a class="cardlink" href="homepage.php?game=<?=$game;?>&group=<?= $group['groupID'];?>&img=<?php echo !empty($cardz['imageUrl']) ? htmlspecialchars($cardz['imageUrl']) : 'includes/Magic_card_back.png'; ?>">Add Card</a>
                         
                     </div>
                 <?php endforeach; 
             } else {
-                foreach((array) $results['data'] as $card): ?>
+                foreach((array) $results['data'] as $cardz): ?>
                     <div class="card">
-                        <h3 class="cardName"><?php echo htmlspecialchars($card['name']); ?></h3>
-                        <img class="cardImg" src="<?php echo htmlspecialchars($card['images']['small']); ?>">
-                        <a class="cardlink" href="homepage.php?game=<?=$game;?>&group=<?= $group['groupID'];?>&img=<?=$card['images']['small'];?>" onclick="addCard(<?= $group['groupID'];?>, <?=$card['images']['small'];?>)">Add Card</a>
+                        <h3 class="cardName"><?php echo htmlspecialchars($cardz['name']); ?></h3>
+                        <img class="cardImg" src="<?php echo htmlspecialchars($cardz['images']['small']); ?>">
+                        <a class="cardlink" href="homepage.php?game=<?=$game;?>&group=<?= $_SESSION['group'];?>&img=<?=$cardz['images']['small'];?>" onclick="addCard(<?= $group['groupID'];?>, <?=$cardz['images']['small'];?>)">Add Card</a>
                     </div>
                 <?php endforeach; 
             }

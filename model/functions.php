@@ -221,18 +221,18 @@ function addCard($groupID, $cardImg){
     return $result;
 }
 
-function getCards($id){
-    global $db;
+function getCards($groupID) {
+    global $db; // Use global database connection
 
     $result = [];
 
-    $stmt = $db->prepare("SELECT * FROM groupz WHERE id = :id ORDER BY groupID");
+    $stmt = $db->prepare("SELECT * FROM cards WHERE groupID = :groupID");
 
     $binds = array(
-        ':id'=> $id
+        ':groupID' => $groupID
     );
 
-    if ( $stmt->execute($binds) && $stmt->rowCount() > 0){
+    if ($stmt->execute($binds)) { 
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
