@@ -358,6 +358,7 @@ svg{
     display: flex;
     flex-wrap: wrap;
     overflow-y: auto;
+    padding: 30px;
 }
 
 .groups a{
@@ -375,6 +376,9 @@ svg{
     margin-bottom: 5px;
     border: solid black 1px;
     border-radius: 10px;
+}
+.cardSmall:hover{
+    transform: scale(1.2);
 }
 
 
