@@ -170,7 +170,7 @@ include 'includes/style homepage.php';
     <div class="left">
         <!-- Filter Section for My Collection -->
         <div class="filter">
-            <!--<div class="filtText">
+            <!--<div class="filtText"> Hidden because its not done
                 <p>My Collection</p>
             </div>
             <div style="margin-bottom:10px">
