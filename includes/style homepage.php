@@ -137,7 +137,8 @@ body{
     grid-area:f;
     width:415px;
     height:730px;
-    background-color:#DDDDDD; 
+    background-color:#DDDDDD;
+    
 }
 .filtText{
     font-family: "Jersey 20";

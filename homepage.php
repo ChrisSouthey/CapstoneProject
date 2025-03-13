@@ -170,7 +170,7 @@ include 'includes/style homepage.php';
     <div class="left">
         <!-- Filter Section for My Collection -->
         <div class="filter">
-            <div class="filtText">
+            <!--<div class="filtText">
                 <p>My Collection</p>
             </div>
             <div style="margin-bottom:10px">
@@ -201,7 +201,7 @@ include 'includes/style homepage.php';
                     
                     <button type="submit">Filter Cards</button>
                 </form>
-            </div>
+            </div> -->
         </div>
 
         
@@ -262,6 +262,7 @@ include 'includes/style homepage.php';
                         <h3 class="cardName"><?php echo htmlspecialchars($cardz['name']); ?></h3>
                         <img class="cardImg" src="<?php echo isset($cardz['imageUrl']) ? htmlspecialchars($cardz['imageUrl']) : 'includes/Magic_card_back.png'; ?>">
                         <a class="cardlink" href="homepage.php?game=<?=$game;?>&group=<?= $_SESSION['group']?>&img=<?php echo !empty($cardz['imageUrl']) ? htmlspecialchars($cardz['imageUrl']) : 'https://i.imgur.com/LdOBU1I.jpeg'; ?>">Add Card</a>
+                        
                     </div>
                 <?php endforeach; 
             } else {
