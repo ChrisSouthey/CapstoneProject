@@ -377,6 +377,7 @@ svg{
     margin-bottom: 5px;
     border: solid black 1px;
     border-radius: 10px;
+    transition: all 0.3s ease;
 }
 .cardSmall:hover{
     transform: scale(1.2);
