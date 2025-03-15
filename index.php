@@ -1,5 +1,5 @@
 <?php include 'includes/header.php'; ?>
-<?php include 'includes/style loginRegister.php'; ?>
+<?php include 'includes/nav.php'; ?>
 
 <div id="container">
     <div class="logo">
