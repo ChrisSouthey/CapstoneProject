@@ -1,36 +1,41 @@
-<?php include 'includes/header.php'; ?>
 <?php include 'includes/nav.php'; ?>
 
-<div id="container">
-    <div class="logo">
-        <div class="logotext">
-            <p>DECK BUDDY<p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing Page</title>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+
+    <div id="container">
+        <div class="header1">
+            <h1> Deck Buddy <h1>
+            <p> lorem ipsum doler shmidt ametlorem ipsum doler shmidt ametlorem ipsum doler shmidt ametlorem ipsum doler shmidt amet</p>
         </div>
-    </div>
-    <div class="search">
-        <div class="headText">
-            <p>Your ultimate card game database.</p>
+
+        <div class="deck-cards">
+
+            <div class="deck-card1 card"></div>
+
+            <div class="deck-card2 card"></div>
+
+            <div class="deck-card3 card"></div>
+
+            <div class="deck-card4 card"></div>
+
+            <div class="deck-card5 card"></div>
+
         </div>
-    </div>
-    <div class="filter">
 
-    </div>
-    <div class="mainbox">
-        <div class="infoBox">
-            <p>Deck Buddy is the ultimate card organizer, where you can list, organize, and sort through all of your cards and decks!</p>
-        </div>
-        <div class="loginBox">
-            <div class="loginText">
-                <p class="login"><a href="accountPages/login.php">Log in</a> here to access your cards.</p>
-                <p class="register">New User? <a href="accountPages/register.php">Register</a> here!</p>
-            </div>
-        </div>
-    </div>
-    <div class="cardinfo">
-
+    
     </div>
 
-</div>
+</body>
+</html>
 
 
-<?php include 'includes/footer.php'; ?>
+
+

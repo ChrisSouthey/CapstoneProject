@@ -1,0 +1,70 @@
+body {
+    overflow: hidden;
+}
+
+#container {
+    width: 100%;
+    height: 90dvh;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin-top: 150px;
+}
+
+.header1 {
+    width: 60%;
+    text-align: center;
+    margin-bottom: 100px;
+}
+
+.header1 h1 {
+    font-weight: 300;
+    font-size: 4vw;
+    color: var(--text);
+}
+
+.header1 p {
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5vw;
+    color: var(--text-dim);
+    font-weight: 300;
+}
+
+.deck-cards {
+    display: flex;
+    gap: -20px;
+}
+
+.card {
+    background-color: beige;
+    width: 320px;
+    height: 400px;
+    border-radius: 15px;
+    box-shadow: 4px 5px #000000a1;
+    overlay: auto;
+    transition: all 0.3s ease;
+}
+
+.deck-card1 {
+    margin-top: 300px;
+    transform: rotate(-40deg);
+}
+
+.deck-card5 {
+    margin-top: 300px;
+    transform: rotate(40deg)
+}
+
+.deck-card2 {
+    margin-top: 100px;
+    transform: rotate(-20deg);
+}
+
+.deck-card4 {
+    margin-top: 100px;
+    transform: rotate(20deg);
+}
+
