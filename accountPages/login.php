@@ -1,7 +1,7 @@
 <?php 
 session_start();
 
-include '../includes/header.php'; 
+
  
 include '../model/functions.php';
 
@@ -30,9 +30,23 @@ if(isset($_POST['login'])){
     }
     
 }
-
-include '../includes/style loginRegister.php';
+include '../includes/nav.php'; 
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="../css/login.css">
+    <link rel="stylesheet" href="../css/nav.css">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    
+</body>
+</html>
 
 <div id="container">
     <div class="logo">
@@ -97,4 +111,4 @@ include '../includes/style loginRegister.php';
 </script>
 
 
-<?php include '../includes/footer.php'; ?>
+
