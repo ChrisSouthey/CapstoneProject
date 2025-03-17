@@ -35,36 +35,61 @@ body {
 
 .deck-cards {
     display: flex;
-    gap: -20px;
+    gap: -40px; /* Reduced gap to bring cards closer together */
 }
 
 .card {
-    background-color: beige;
     width: 320px;
-    height: 400px;
+    height: 450px;
     border-radius: 15px;
-    box-shadow: 4px 5px #000000a1;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.452);
     overlay: auto;
     transition: all 0.3s ease;
 }
 
 .deck-card1 {
-    margin-top: 300px;
-    transform: rotate(-40deg);
+    margin-top: 190px;
+    transform: rotate(-25deg);
+    margin-right: -100px;
+    z-index: 5;
+    background-image: url(../images/una.webp);
+    background-size: cover;
+    background-position: center;
 }
 
 .deck-card5 {
-    margin-top: 300px;
-    transform: rotate(40deg)
+    margin-top: 190px;
+    transform: rotate(25deg);
+    margin-left: -100px;
+    z-index: 1;
+    background-image: url(../images/op.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+.deck-card3 {
+    z-index: 3;
+    background-image: url(../images/pokemonback.webp);
+    background-size: cover;
+    background-position: center;
 }
 
 .deck-card2 {
-    margin-top: 100px;
-    transform: rotate(-20deg);
+    margin-top: 50px;
+    transform: rotate(-8deg);
+    margin-right: -50px;
+    z-index: 4;
+    background-image: url(../images/Magic_card_back.png);
+    background-size: cover;
+    background-position: center;
 }
 
 .deck-card4 {
-    margin-top: 100px;
-    transform: rotate(20deg);
+    margin-left: -50px;
+    margin-top: 50px;
+    transform: rotate(8deg);
+    z-index: 2;
+    background-image: url(../images/digi.webp);
+    background-size: cover;
+    background-position: center;
 }
-
