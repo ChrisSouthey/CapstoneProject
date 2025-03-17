@@ -14,7 +14,7 @@
         </div>
         <div class="nav-links">
             <ul>
-                <li><a href="index.php">Home</a></li>
+                <li><a href="../index.php">Home</a></li>
                 <li><a href="about.php">Decks</a></li>
                 <li><a href="contact.php">Search</a></li>
             </ul>

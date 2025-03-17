@@ -44,11 +44,7 @@ include '../includes/nav.php';
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-    
-</body>
-</html>
-
-<div id="container">
+    <div id="container">
     <div class="logo">
         <div class="logotext">
             <p>DECK BUDDY<p>
@@ -109,6 +105,10 @@ include '../includes/nav.php';
         btn.setAttribute('fill', '#666666');
     });
 </script>
+</body>
+</html>
+
+
 
 
 

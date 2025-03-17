@@ -1,7 +1,7 @@
 <?php 
 session_start();
 
-include '../includes/header.php'; 
+include '../includes/nav.php'; 
 include '../model/functions.php'; 
 
 $name = "";
@@ -40,11 +40,21 @@ if(isset($_POST["register"])){
 }
 
 
-include '../includes/style loginRegister.php'; 
 
 ?>
 
-<div id="container">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="../css/login.css">
+    <link rel="stylesheet" href="../css/nav.css">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div id="container">
     <div class="logo">
         <div class="logotext">
             <p>DECK BUDDY<p>
@@ -107,9 +117,12 @@ include '../includes/style loginRegister.php';
         btn.setAttribute('fill', '#666666');
     });
 </script>
+</body>
+</html>
 
 
-<?php include '../includes/footer.php'; ?>
+
+
 
 
 
