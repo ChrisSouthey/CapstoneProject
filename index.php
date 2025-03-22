@@ -13,7 +13,9 @@
     <div id="container">
         <div class="header1">
             <h1> Deck Buddy <h1>
-            <p> lorem ipsum doler shmidt ametlorem ipsum doler shmidt ametlorem ipsum doler shmidt ametlorem ipsum doler shmidt amet</p>
+            <p>
+            Deck Buddy is the ultimate card organizer, where you can list, organize, and sort through all of your cards and decks!
+            </p>
         </div>
 
         <div class="deck-cards">

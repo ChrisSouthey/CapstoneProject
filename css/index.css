@@ -16,7 +16,7 @@ body {
 .header1 {
     width: 60%;
     text-align: center;
-    margin-bottom: 100px;
+    margin-bottom: 50px;
 }
 
 .header1 h1 {
@@ -35,21 +35,26 @@ body {
 
 .deck-cards {
     display: flex;
-    gap: -40px; /* Reduced gap to bring cards closer together */
+    gap: -40px;
+    margin-bottom: 100px;
 }
 
 .card {
     width: 320px;
     height: 450px;
     border-radius: 15px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.452);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.65);
     overlay: auto;
     transition: all 0.3s ease;
 }
 
+.card:hover {
+    transform: translateY(-6px);
+}
+
 .deck-card1 {
     margin-top: 190px;
-    transform: rotate(-25deg);
+    transform: rotate(-25deg) translateY(0);
     margin-right: -100px;
     z-index: 5;
     background-image: url(../images/una.webp);
@@ -57,9 +62,13 @@ body {
     background-position: center;
 }
 
+.deck-card1:hover {
+    transform: rotate(-25deg) translateY(-3px);
+}
+
 .deck-card5 {
     margin-top: 190px;
-    transform: rotate(25deg);
+    transform: rotate(25deg) translateY(0);
     margin-left: -100px;
     z-index: 1;
     background-image: url(../images/op.jpg);
@@ -67,16 +76,25 @@ body {
     background-position: center;
 }
 
+.deck-card5:hover {
+    transform: rotate(25deg) translateY(-3px);
+}
+
 .deck-card3 {
     z-index: 3;
+    transform: translateY(0);
     background-image: url(../images/pokemonback.webp);
     background-size: cover;
     background-position: center;
 }
 
+.deck-card3:hover {
+    transform: translateY(-3px);
+}
+
 .deck-card2 {
     margin-top: 50px;
-    transform: rotate(-8deg);
+    transform: rotate(-8deg) translateY(0);
     margin-right: -50px;
     z-index: 4;
     background-image: url(../images/Magic_card_back.png);
@@ -84,12 +102,20 @@ body {
     background-position: center;
 }
 
+.deck-card2:hover {
+    transform: rotate(-8deg) translateY(-3px);
+}
+
 .deck-card4 {
     margin-left: -50px;
     margin-top: 50px;
-    transform: rotate(8deg);
+    transform: rotate(8deg) translateY(0);
     z-index: 2;
     background-image: url(../images/digi.webp);
     background-size: cover;
     background-position: center;
+}
+
+.deck-card4:hover {
+    transform: rotate(8deg) translateY(-3px);
 }
