@@ -1,0 +1,260 @@
+/* login.css */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background-color: #ffffff;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+#container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    overflow: hidden;
+}
+
+/* Left side - Login form */
+.mainbox {
+    width: 50%;
+    background-color: white;
+    padding: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: -30px;
+}
+
+.cardinfo {
+    width: 50%;
+    position: relative;
+    border-radius: 50px 0 0 50px;
+    overflow: hidden;
+}
+
+.cardinfo::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../images/bg.png');
+    background-size: cover;
+    background-position: center;
+    z-index: 1;
+}
+
+.cardinfo::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+}
+
+/* Welcome text */
+.headText {
+    margin-bottom: 10px;
+}
+
+.headText p {
+    font-size: 50px;
+    font-weight: bold;
+    color: #131313;
+    margin-bottom: 100px;
+}
+
+.infp {
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 25px;
+}
+
+/* Form styles */
+.formcontainer {
+    width: 100%;
+}
+
+.user, .pass {
+    position: relative;
+    margin-bottom: 15px;
+}
+
+input[type="text"], 
+input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    outline: none;
+    transition: border 0.3s;
+}
+
+input[type="text"]:focus, 
+input[type="password"]:focus {
+    border-color: #ff453a;
+}
+
+input::placeholder {
+    color: #aaa;
+}
+
+.user svg, 
+.pass svg {
+    display: flex;
+}
+
+.eye {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+/* Remember me checkbox */
+.remember {
+    display: flex;
+    align-items: center;
+    margin-top: 50px;
+}
+
+input[type="checkbox"] {
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    margin-right: 8px;
+    position: relative;
+    cursor: pointer;
+}
+
+input[type="checkbox"]:checked {
+    background-color: #ff453a;
+    border-color: #ff453a;
+}
+
+input[type="checkbox"]:checked::after {
+    content: '✓';
+    position: absolute;
+    color: white;
+    font-size: 12px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.remember label {
+    font-size: 14px;
+    color: #777;
+}
+
+/* Login button */
+input[type="submit"] {
+    background-color: #ff453a;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    cursor: pointer;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    box-shadow: 0 4px 10px rgba(255, 69, 58, 0.3);
+    position: relative;
+    transition: all 0.3s;
+}
+
+input[type="submit"]::after {
+    content: '→';
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+}
+
+input[type="submit"]:hover {
+    transform: scale(1.1);
+}
+
+.submit-wrapper {
+  position: relative;
+  width: 45px;
+  height: 45px;
+  margin-left: auto;
+}
+
+input[type="submit"] {
+  /* Your current CSS */
+  width: 100%;
+  height: 100%;
+}
+
+.arrow-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none; /* So clicks pass through to the input */
+  color: white;
+}
+
+
+
+/* Error message */
+.error {
+    color: #ff453a;
+    font-size: 14px;
+    margin-top: 15px;
+}
+
+/* Back link */
+.accsettings a {
+    color: #333;
+    text-decoration: none;
+    font-size: 14px;
+    display: inline-block;
+    margin-top: 20px;
+}
+
+.accsettings a:hover {
+    color: #ff453a;
+}
+
+/* Make the design responsive */
+@media screen and (max-width: 768px) {
+    #container {
+        flex-direction: column;
+        height: auto;
+    }
+    
+    .mainbox {
+        width: 100%;
+        padding: 30px;
+    }
+    
+    .cardinfo {
+        width: 100%;
+        height: 200px;
+    }
+}
