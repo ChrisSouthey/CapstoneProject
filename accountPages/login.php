@@ -48,7 +48,7 @@ if(isset($_POST['login'])){
                 <div class="headText">
                     <p>Welcome</p>
                 </div>
-                <p class="infp">Please enter your login details</p>
+                <p class="infp">Dont have an account? <a>Register</a></p>
             </div>
             
             <form method="POST">
@@ -78,8 +78,8 @@ if(isset($_POST['login'])){
                 </div>
             </form>
             
-            <div class="filter">
-                <div class="accsettings">
+            <div class="bck">
+                <div class="bckbtn">
                     <a href="../index.php">Back</a>
                 </div>
             </div>
