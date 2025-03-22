@@ -33,27 +33,57 @@ body {
     margin-top: -30px;
 }
 
-.cardinfo {
+.rightL {
     width: 50%;
     position: relative;
     border-radius: 50px 0 0 50px;
     overflow: hidden;
 }
 
-.cardinfo::before {
+.rightL::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('../images/bg.png');
+    background-image: url('../images/loginrightimg.png');
     background-size: cover;
     background-position: center;
     z-index: 1;
 }
 
-.cardinfo::after {
+.rightL::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+}
+
+.rightR {
+    width: 50%;
+    position: relative;
+    border-radius: 50px 0 0 50px;
+    overflow: hidden;
+}
+
+.rightR::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../images/registerrightimg.png');
+    background-size: cover;
+    background-position: center;
+    z-index: 1;
+}
+
+.rightR::after {
     content: '';
     position: absolute;
     top: 0;
@@ -83,7 +113,7 @@ body {
 }
 
 .infp a {
-    color: #ff453a;
+    color: #ff3a54;
     text-decoration: none;
     transition: all 0.3s;
     cursor: pointer;
@@ -117,7 +147,7 @@ input[type="password"] {
 
 input[type="text"]:focus, 
 input[type="password"]:focus {
-    border-color: #ff453a;
+    border-color: #ff3a54;
 }
 
 input::placeholder {
@@ -156,8 +186,8 @@ input[type="checkbox"] {
 }
 
 input[type="checkbox"]:checked {
-    background-color: #ff453a;
-    border-color: #ff453a;
+    background-color: #ff3a54;
+    border-color: #ff3a54;
 }
 
 input[type="checkbox"]:checked::after {
@@ -177,7 +207,7 @@ input[type="checkbox"]:checked::after {
 
 /* Login button */
 input[type="submit"] {
-    background-color: #ff453a;
+    background-color: #ff3a54;
     color: white;
     border: none;
     border-radius: 50%;
@@ -236,7 +266,7 @@ input[type="submit"] {
 
 /* Error message */
 .error {
-    color: #ff453a;
+    color: #ff3a54;
     font-size: 14px;
     margin-top: 15px;
 }
@@ -252,7 +282,7 @@ input[type="submit"] {
 }
 
 .bckbtn a:hover {
-    color: #ff453a;
+    color: #ff3a54;
 }
 
 /* Make the design responsive */
